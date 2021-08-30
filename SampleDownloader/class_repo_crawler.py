@@ -5,6 +5,7 @@ import zipfile
 import time
 import os
 import re
+import traceback
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 #禁用安全请求警告
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -94,7 +95,7 @@ class repo_crawler():
 		isOk = False #break标志
 		
 		print('[-] processing repo_list ...')
-		print("page_num is {}".format(len(page_num)))
+		print("page_num is {}".format(page_num))
 		if page_num == 0:
 			print('[-] Crawler is banned by Github. plz try again later.')
 		
@@ -109,6 +110,7 @@ class repo_crawler():
 			try:
 				print("成功进入try,其中url为:{}".format(url))
 				req = requests.get(url=url,verify=False) #获得响应
+				print("成功获取获得返回数据，其中url为:{}")
 				
 				# 获取第一次过滤文本
 				filt_text = re.compile(repo_list_pat,re.S).findall(req.text)[0] 
@@ -123,6 +125,7 @@ class repo_crawler():
 						isOk = True
 						break
 			except:
+				traceback.print_exc()
 				pass
 			if isOk:
 				break
