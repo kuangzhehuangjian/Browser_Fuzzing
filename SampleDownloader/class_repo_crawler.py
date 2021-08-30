@@ -87,7 +87,7 @@ class repo_crawler():
 		repo_list = [] #初始化 repo_name_list
 		
 		repo_list_pat = '<ul class="repo-list">(.*?)</ul>' #第一次过滤文本的正则
-		repo_name_pat = '<div.*?<div.*?<h3>.*?href="(.*?)">' #过滤仓库名的正则
+		repo_name_pat = '<div.*?<div.*?<a>.*?href="(.*?)">' #过滤仓库名的正则
 		
 		url = self.base_url+'&l='+self.language+'&q='+self.keyword+'+size%3A<='+str(self.repo_size)
 		page_num = self.get_page_num(url) #获取总页数
