@@ -147,8 +147,8 @@ def process_repo(repo_path, output_dir,split=True):
 
 
 if __name__ == '__main__':
-	repo_path = 'set your path here' #输入目录
-	output_dir = 'set your path here'  # 输出目录
+	repo_path = '../SampleDownloader/result' #输入目录
+	output_dir = 'result'  # 输出目录
 	
 	#按仓库分html,css,js 或者  统一html,css,js; 
 	_split = False
