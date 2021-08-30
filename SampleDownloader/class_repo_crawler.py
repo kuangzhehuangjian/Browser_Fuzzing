@@ -94,7 +94,7 @@ class repo_crawler():
 		isOk = False #break标志
 		
 		print('[-] processing repo_list ...')
-		
+		print("page_num is {}".format(len(page_num)))
 		if page_num == 0:
 			print('[-] Crawler is banned by Github. plz try again later.')
 		
