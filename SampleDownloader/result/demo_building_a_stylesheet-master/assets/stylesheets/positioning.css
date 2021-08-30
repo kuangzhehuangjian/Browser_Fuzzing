@@ -1,0 +1,66 @@
+/* ----------------------------------- *
+ * Positioning
+ * ----------------------------------- */
+
+
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+
+#main-header {
+  height: 128px;
+}
+#main-content-container {
+  height: 384px;
+}
+#main-content {
+  width: 67%;
+}
+#sidebar {
+  width: 33%;
+}
+#main-footer {
+  height: 96px;
+}
+#main-content,
+#sidebar {
+  height: 100%;
+}
+
+
+.square {
+  width: 64px;
+  height: 64px;
+}
+
+#relatively-positioned-parent {
+  position: relative;
+  top: 32px;
+  left: 32px;
+  width: 256px;
+  height: 256px;
+}
+#absolutely-positioned-child {
+  position: absolute;
+}
+#relatively-positioned-child {
+  position: relative;
+}
+#fixed-position-child {
+  position: fixed;
+}
+#fixed-position-child,
+#absolutely-positioned-child,
+#relatively-positioned-child {
+  top: 32px;
+  left: 32px;
+}
+
+

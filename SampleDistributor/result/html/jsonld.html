@@ -1,0 +1,14 @@
+{#  #}
+{% if HEADER_COVER %}
+  {% set default_cover = SITEURL+"/"+HEADER_COVER %}
+{% else %}
+  {% set default_cover = SITEURL+"/"+THEME_STATIC_DIR+"/images/home-bg.jpg" %}
+{% endif %}
+
+{#  #}
+{% if SITESUBTITLE %}
+    {% set description = SITESUBTITLE %}
+{% else %}
+    {% set description = 'View the blog.' %}
+{% endif %}
+<script>script</script>

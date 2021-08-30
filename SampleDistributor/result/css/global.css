@@ -1,0 +1,47 @@
+/* ----------------------------------- *
+ * Global
+ * ----------------------------------- */
+
+html,
+body {
+  color: #444;
+}
+
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: " ";
+}
+.clearfix::after {
+  clear: both;
+}
+
+
+.container {
+  display: block;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+
+.img-responsive {
+  width: 100%;
+  height: auto;
+}
+
+
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+
+
+
+
+
+

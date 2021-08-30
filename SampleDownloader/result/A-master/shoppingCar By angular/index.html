@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+</head>
+<body ng-app="">
+	<div ng-controller="carController" class="container">
+        <nav class="navbar navbar-default" role="navigation">
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" ng-model="search.id" class="form-control" placeholder="请搜索商品的编号">
+                    </div>
+                </form>
+            </div>
+        </nav>
+        <table class="table">
+          <thead>
+             <tr>
+                 <th>产品编号</th>
+                 <th>产品名字</th>
+                 <th>购买数量</th>
+                 <th>产品单价</th>
+                 <th>产品总价</th>
+                 <th>操作</th>
+             </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="item in data | filter:search">
+                  <td>{{item.id}}</td>
+                  <td>{{item.name}}</td>
+                  <td>
+                      <button type="button" ng-click="carModule.reduce(item.id)" class="btn tn-primary">-</button>
+                      <input type="text" value="{{item.count}}" ng-model="item.count" >
+                      <button type="button" ng-click="carModule.add(item.id)" class="btn tn-primary">+</button>
+                  </td>
+                  <td>{{item.price}}</td>
+                  <td>{{item.price*item.count | currency:'¥'}}</td>
+                  <td>
+                        <button type="button" ng-click="carModule.remove(item.id)" class="btn btn-danger">移除</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>总购买价</td>
+                  <td>{{priceModule.totalPrice() | currency:'¥'}}</td>
+                  <td>总购买数量</td>
+                  <td>{{carModule.totalCount()}}</td>
+                  <td colspan="2"> <button type="button" ng-click="carModule.clearData()" class="btn btn-danger">清空购物车</button></td>
+              </tr>
+          </tbody>
+        </table>
+    </div>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/angularjs.js"></script>	
+</body>
+</html>

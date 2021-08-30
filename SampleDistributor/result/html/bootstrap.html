@@ -1,0 +1,72 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/bootstrap.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code> Tag</h3>
+<p>This example shows the recommended path for integrating Angular with what we call automatic
+initialization.</p>
+<pre>pre</pre>
+<ul>
+<li>Place the <code>code</code> tag at the bottom of the page. Placing script tags at the end of the page
+improves app load time because the HTML loading is not blocked by loading of the <code>code</code>
+script. You can get the latest bits from <a href="http://code.angularjs.org"><a href="http://code.angularjs.org">http://code.angularjs.org</a></a>. Please don&#39;t link
+your production code to this URL, as it will expose a security hole on your site. For
+experimental development linking to our site is fine.<ul>
+<li>Choose: <code>code</code> for a human-readable file, suitable for development and
+debugging.</li>
+<li>Choose: <code>code</code> for a compressed and obfuscated file, suitable for use in
+production.</li>
+</ul>
+</li>
+<li><p>Place <code>code</code> to the root of your application, typically on the <code>code</code> tag if you want
+angular to auto-bootstrap your application.</p>
+<pre>pre</pre>
+</li>
+<li><p>If IE7 support is required add <code>code</code></p>
+<pre>pre</pre>
+</li>
+<li><p>If you choose to use the old style directive syntax <code>code</code> then include xml-namespace in <code>code</code>
+to make IE happy. (This is here for historical reasons, and we no longer recommend use of
+<code>code</code>.)</p>
+<pre>pre</pre>
+</li>
+</ul>
+<h3 id="overview_automatic-initialization">Automatic Initialization</h3>
+<p><img class="pull-right" style="padding-left: 3em;" src="a.png"></p>
+<p>Angular initializes automatically upon <code>code</code> event or when the <code>code</code> script is
+evaluated if at that time <code>code</code> is set to <code>code</code>. At this point Angular looks
+for the <a href="api/ng.directive:ngApp"><code>code</code></code></a> directive which designates your application root.
+If the <a href="api/ng.directive:ngApp"><code>code</code></code></a> directive is found then Angular will:</p>
+<ul>
+<li>load the <a href="guide/module">module</a> associated with the directive.</li>
+<li>create the application <a href="api/AUTO.$injector"><code>code</code></a></li>
+<li>compile the DOM treating the <a href="api/ng.directive:ngApp"><code>code</code></code></a> directive as the root of the compilation. This allows you to tell it to treat only a
+portion of the DOM as an Angular application.</li>
+</ul>
+<pre>pre</pre>
+<h3 id="overview_manual-initialization">Manual Initialization</h3>
+<p>If you need to have more control over the initialization process, you can use a manual
+bootstrapping method instead. Examples of when you&#39;d need to do this include using script loaders
+or the need to perform an operation before Angular compiles a page.</p>
+<p>Here is an example of manually initializing Angular:</p>
+<pre>pre</pre>
+<p>Note that we have provided the name of our application module to be loaded into the injector as the second
+parameter of the <a href="api/angular.bootstrap"><code>code</code></a> function. Notice that <code>code</code> will not create modules 
+on the fly. You must create any custom <a href="guide/module">modules</a> before you pass them as a parameter. </p>
+<p>This is the sequence that your code should follow:</p>
+<ol>
+<li><p>After the page and all of the code is loaded, find the root element of your AngularJS
+application, which is typically the root of the document.</p>
+</li>
+<li><p>Call <a href="api/angular.bootstrap"><code>code</code></a> to <a href="guide/compiler">compile</a> the element into an
+executable, bi-directionally bound application.</p>
+</li>
+</ol>
+<h3 id="overview_deferred-bootstrap">Deferred Bootstrap</h3>
+<p>This feature enables tools like Batarang and test runners to
+hook into angular&#39;s bootstrap process and sneak in more modules
+into the DI registry which can replace or augment DI services for
+the purpose of instrumentation or mocking out heavy dependencies.</p>
+<p>If <code>code</code> contains prefix <code>code</code> when
+<a href="api/angular.bootstrap"><code>code</code></a> is called, the bootstrap process will be paused
+until <code>code</code> is called.</p>
+<p><code>code</code> takes an optional array of modules that
+should be added to the original list of modules that the app was
+about to be bootstrapped with.</p>
+</div></div>

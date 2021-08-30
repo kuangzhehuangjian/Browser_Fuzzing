@@ -1,0 +1,71 @@
+/* ----------------------------------- *
+ * Login
+ * ----------------------------------- */
+
+
+#login-form {
+  max-width: 512px;
+  margin: 0 auto;
+  margin-top: 96px;
+}
+
+
+.form-group {
+  margin-bottom: 1em;
+  width: 100%;
+}
+.form-group label,
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  display: block;
+}
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  display: block;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #D4D9DC;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-indent: 1em;
+  width: 100%;
+}
+.form-group input {
+  transition: border 0.5s;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #8299DC;
+}
+
+
+.btn {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #8299DC;
+  background-color: #fff;
+  cursor: pointer;
+  color: #7A90CF;
+}
+.btn:hover,
+.btn:active {
+  color: #fff;
+}
+.btn:hover {
+  background-color: #8FA7F1;
+  border-color: #8299DC;
+}
+.btn:active {
+  background-color: #89A1E8;
+  border-color: #7A90CF;
+}
+
+
+
+
+
+

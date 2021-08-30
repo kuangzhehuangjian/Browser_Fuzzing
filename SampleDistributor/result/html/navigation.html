@@ -1,0 +1,21 @@
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+    
+
+            <li><a href="{{ SITEURL }}/{{ ABOUT_URL | default('pages/about/index.html') }}">About</span></a></li>
+            
+            <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">Archives</span></a></li>
+            
+            <li><a href="{{ SITEURL }}/{{ CATEGORIES_URL | default('categories.html') }}">Categories</span></a></li>
+            
+            <li><a href="{{ SITEURL }}/{{ TAGS_URL | default('tags.html') }}">Tags</span></a></li>
+
+      {% for name,link in SOCIAL if name in ['rss', 'rss-square', 'feed'] %}
+        <li class="nav-rss"><a href="{{ link }}"><i class="ic ic-rss"></i> Subscribe</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

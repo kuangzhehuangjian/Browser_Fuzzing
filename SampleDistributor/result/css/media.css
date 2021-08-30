@@ -1,0 +1,15 @@
+/* ----------------------------------- *
+ * Media
+ * ----------------------------------- */
+
+.img-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.img-responsive {
+  width: 100%;
+  height: auto;
+}
+
+
+

@@ -1,0 +1,137 @@
+<a href="http://github.com/angular/angular.js/tree/v1.2.13/src/ngResource/resource.js#L63" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="a.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>
+<div><span class="hint">service in module <code>code</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ngresource-resource-page"><p>A factory which creates a resource object that lets you interact with
+<a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">RESTful</a> server-side data sources.</p>
+<p>The returned resource object has action methods which provide high-level behaviors without
+the need to interact with the low level <a href="api/ng.$http"><code>code</code></a> service.</p>
+<p>Requires the <a href="api/ngResource"><code>code</code></a> module to be installed.</p>
+</div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code>code</code>
+</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre>pre</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ngresource-resource-page"><p>A parametrized URL template with parameters prefixed by <code>code</code> as in
+<code>code</code>. If you are using a URL with a port number (e.g.
+<code>code</code>), it will be respected.</p>
+<p>If you are using a url with a suffix, just add the suffix, like this:
+<code>code</code> or <code>code</code>
+or even <code>code</code>
+If the parameter before the suffix is empty, :resource_id in this case, then the <code>code</code> will be
+collapsed down to a single <code>code</code>.  If you need this sequence to appear and not collapse then you
+can escape it with <code>code</code>.</p>
+</div></td></tr><tr><td>paramDefaults <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="ngresource-resource-page"><p>Default values for <code>code</code> parameters. These can be overridden in
+<code>code</code> methods. If any of the parameter value is a function, it will be executed every time
+when a param value needs to be obtained for a request (unless the param was overridden).</p>
+<p>Each key value in the parameter object is first bound to url template if present and then any
+excess keys are appended to the url search query after the <code>code</code>.</p>
+<p>Given a template <code>code</code> and parameter <code>code</code> results in
+URL <code>code</code>.</p>
+<p>If the parameter value is prefixed with <code>code</code> then the value of that parameter is extracted from
+the data object (useful for non-GET operations).</p>
+</div></td></tr><tr><td>actions <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-object">Object.&lt;Object&gt;</a></td><td><div class="ngresource-resource-page"><p>Hash with declaration of custom action that should extend the
+default set of resource actions. The declaration should be created in the format of <a href="api/ng.$http#usage_parameters"><code>code</code></a>:</p>
+<pre>pre</pre>
+<p>Where:</p>
+<ul>
+<li><strong><code>code</code></strong> – {string} – The name of action. This name becomes the name of the method on
+your resource object.</li>
+<li><strong><code>code</code></strong> – {string} – HTTP request method. Valid methods are: <code>code</code>, <code>code</code>, <code>code</code>,
+<code>code</code>, and <code>code</code>.</li>
+<li><strong><code>code</code></strong> – {Object=} – Optional set of pre-bound parameters for this action. If any of
+the parameter value is a function, it will be executed every time when a param value needs to
+be obtained for a request (unless the param was overridden).</li>
+<li><strong><code>code</code></strong> – {string} – action specific <code>code</code> override. The url templating is supported just
+like for the resource-level urls.</li>
+<li><strong><code>code</code></strong> – {boolean=} – If true then the returned object for this action is an array,
+see <code>code</code> section.</li>
+<li><strong><code>code</code></strong> –
+<code>code</code> –
+transform function or an array of such functions. The transform function takes the http
+request body and headers and returns its transformed (typically serialized) version.</li>
+<li><strong><code>code</code></strong> –
+<code>code</code> –
+transform function or an array of such functions. The transform function takes the http
+response body and headers and returns its transformed (typically deserialized) version.</li>
+<li><strong><code>code</code></strong> – <code>code</code> – If true, a default $http cache will be used to cache the
+GET request, otherwise if a cache instance built with
+<a href="api/ng.$cacheFactory"><code>code</code></a>, this cache will be used for
+caching.</li>
+<li><strong><code>code</code></strong> – <code>code</code> – timeout in milliseconds, or <a href="api/ng.$q"><code>code</code></a> that
+should abort the request when resolved.</li>
+<li><strong><code>code</code></strong> - <code>code</code> - whether to set the <code>code</code> flag on the
+XHR object. See <a href="https://developer.mozilla.org/en/http_access_control#section_5">requests with credentials</a> for more information.</li>
+<li><strong><code>code</code></strong> - <code>code</code> - see <a href="https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest#responseType">requestType</a>.</li>
+<li><strong><code>code</code></strong> - <code>code</code> - The interceptor object has two optional methods -
+<code>code</code> and <code>code</code>. Both <code>code</code> and <code>code</code> interceptors get called
+with <code>code</code> object. See <a href="api/ng.$http"><code>code</code></a>.</li>
+</ul>
+</div></td></tr></tbody></table><h4 id="usage_returns">Returns</h4><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="ngresource-resource-page"><p>A resource &quot;class&quot; object with methods for the default set of resource actions
+optionally extended with custom <code>code</code>. The default set contains these actions:</p>
+<pre>pre</pre>
+<p>Calling these methods invoke an <a href="api/ng.$http"><code>code</code></a> with the specified http method,
+destination and parameters. When the data is returned from the server then the object is an
+instance of the resource class. The actions <code>code</code>, <code>code</code> and <code>code</code> are available on it
+as  methods with the <code>code</code> prefix. This allows you to easily perform CRUD operations (create,
+read, update, delete) on server-side data like this:
+<pre>pre</pre>
+<p>It is important to realize that invoking a $resource object method immediately returns an
+empty reference (object or array depending on <code>code</code>). Once the data is returned from the
+server the existing reference is populated with the actual data. This is a useful trick since
+usually the resource is assigned to a model which is then rendered by the view. Having an empty
+object results in no rendering, once the data arrives from the server then the object is
+populated with the data and the view automatically re-renders itself showing the new data. This
+means that in most cases one never has to write a callback function for the action methods.</p>
+<p>The action methods on the class object or instance object can be invoked with the following
+parameters:</p>
+<ul>
+<li>HTTP GET &quot;class&quot; actions: <code>code</code></li>
+<li>non-GET &quot;class&quot; actions: <code>code</code></li>
+<li>non-GET instance actions:  <code>code</code></li>
+</ul>
+<p>Success callback is called with (value, responseHeaders) arguments. Error callback is called
+with (httpResponse) argument.</p>
+<p>Class actions return empty instance (with additional properties below).
+Instance actions return promise of the action.</p>
+<p>The Resource instances and collection have these additional properties:</p>
+<ul>
+<li><p><code>code</code>: the <a href="api/ng.$q"><code>code</code></a> of the original server interaction that created this
+instance or collection.</p>
+<p>On success, the promise is resolved with the same resource instance or collection object,
+updated with data from server. This makes it easy to use in
+<a href="api/ngRoute.$routeProvider">resolve section of $routeProvider.when()</a> to defer view
+rendering until the resource(s) are loaded.</p>
+<p>On failure, the promise is resolved with the <a href="api/ng.$http"><code>code</code></a> object, without
+the <code>code</code> property.</p>
+</li>
+<li><p><code>code</code>: <code>code</code> after first server interaction is completed (either with success or
+ rejection), <code>code</code> before that. Knowing if the Resource has been resolved is useful in
+ data-binding.</p>
+</li>
+</ul>
+</div></td></tr></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="ngresource-resource-page"><h3 id="example_credit-card-resource">Credit card resource</h3>
+<pre>pre</pre>
+<p>The object returned from this function execution is a resource &quot;class&quot; which has &quot;static&quot; method
+for each action in the definition.</p>
+<p>Calling these methods invoke <code>code</code> on the <code>code</code> template with the given <code>code</code>, <code>code</code> and
+<code>code</code>.
+When the data is returned from the server then the object is an instance of the resource type and
+all of the non-GET methods are available with <code>code</code> prefix. This allows you to easily support CRUD
+operations (create, read, update, delete) on server-side data.</p>
+<p>   <pre>pre</pre>
+<p>It&#39;s worth noting that the success callback for <code>code</code>, <code>code</code> and other methods gets passed
+in the response that came from the server as well as $http header getter function, so one
+could rewrite the above example and get access to http headers as:</p>
+<p>   <pre>pre</pre>
+<h3 id="example_creating-a-custom-put-request">Creating a custom &#39;PUT&#39; request</h3>
+<p>In this example we create a custom method on our resource to make a PUT request
+<pre>pre</pre>
+</div></div>
+</div>

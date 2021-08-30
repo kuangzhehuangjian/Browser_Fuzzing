@@ -1,0 +1,22 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/error/compile/ctreq.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>
+<div><span class="hint">error in component <code>code</code>
+</span>
+</div>
+</h1>
+<div><pre>pre</pre>
+<h2 id="description">Description</h2>
+<div class="description"><div class="-compile-page -compile-ctreq-page"><p>This error occurs when <a href="api/ng.$compile"><code>code</code></a> tries to process a directive that specifies the <a href="api/ng.$compile#description_comprehensive-directive-api_directive-definition-object"><code>code</code> option</code></a> in a <a href="api/ng.$compile#description_comprehensive-directive-api"><code>code</code></a>,
+but the required directive controller is not present on the current DOM element (or its ancestor element, if <code>code</code> was specified).</p>
+<p>To resolve this error ensure that there is no typo in the required controller name and that the required directive controller is present on the current element.</p>
+<p>If the required controller is expected to be on a ancestor element, make ensure that you prefix the controller name in the <code>code</code> definition with <code>code</code>.</p>
+<p>If the required controller is optionally requested, use <code>code</code> or <code>code</code> to specify that.</p>
+<p>Example of a directive that requires <a href="api/ng.directive:ngModel"><code>code</code></a> controller:</p>
+<pre>pre</pre>
+<p>This directive can then be used as:</p>
+<pre>pre</pre>
+<p>Example of a directive that optionally requires a <a href="api/ng.directive:form"><code>code</code></a> controller from an ancestor:</p>
+<pre>pre</pre>
+<p>This directive can then be used as:</p>
+<pre>pre</pre>
+</div></div>
+</div>

@@ -1,0 +1,86 @@
+<a href="http://github.com/angular/angular.js/tree/v1.2.13/src/ng/directive/select.js#L4" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="a.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>
+<div><span class="hint">directive in module <code>code</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ng-directive-page ng-directive-select-page"><p>HTML <code>code</code> element with angular data-binding.</p>
+<h3 id="description"><code>code</code></h3>
+<p>The <code>code</code> attribute can be used to dynamically generate a list of <code>code</code>
+elements for the <code>code</code> element using the array or object obtained by evaluating the
+<code>code</code> comprehension_expression.</p>
+<p>When an item in the <code>code</code> menu is selected, the array element or object property
+represented by the selected option will be bound to the model identified by the <code>code</code>
+directive.</p>
+<div class="alert alert-warning">
+<strong>Note:</strong> <code>code</code> compares by reference, not value. This is important when binding to an
+array of objects. See an example <a href="http://jsfiddle.net/qWzTb/">in this jsfiddle</a>.
+</div>
+
+<p>Optionally, a single hard-coded <code>code</code> element, with the value set to an empty string, can
+be nested into the <code>code</code> element. This element will then represent the <code>code</code> or &quot;not selected&quot;
+option. See example below for demonstration.</p>
+<div class="alert alert-warning">
+<strong>Note:</strong> <code>code</code> provides an iterator facility for the <code>code</code> element which should be used instead
+of <a href="api/ng.directive:ngRepeat"><code>code</code></a> when you want the
+<code>code</code> model to be bound to a non-string value. This is because an option element can only
+be bound to string values at present.
+</div></div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><p>This directive can be used as custom element, but be aware of <a href="guide/ie">IE restrictions</a>.</p>as element:<pre>pre</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ngModel</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-directive-page ng-directive-select-page"><p>Assignable angular expression to data-bind to.</p>
+</div></td></tr><tr><td>name <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-directive-page ng-directive-select-page"><p>Property name of the form under which the control is published.</p>
+</div></td></tr><tr><td>required <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-directive-page ng-directive-select-page"><p>The control is considered valid only if value is entered.</p>
+</div></td></tr><tr><td>ngRequired <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ng-directive-page ng-directive-select-page"><p>Adds <code>code</code> attribute and <code>code</code> validation constraint to
+the element when the ngRequired expression evaluates to true. Use <code>code</code> instead of
+<code>code</code> when you want to data-bind to the <code>code</code> attribute.</p>
+</div></td></tr><tr><td>ngOptions <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-comprehension_expression">comprehension_expression</a></td><td><div class="ng-directive-page ng-directive-select-page"><p>in one of the following forms:</p>
+<ul>
+<li>for array data sources:<ul>
+<li><code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code></li>
+<li><code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code></li>
+<li><code>code</code>  <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code></li>
+<li><code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code></li>
+</ul>
+</li>
+<li>for object data sources:<ul>
+<li><code>code</code> <strong><code>code</code></strong><code>code</code> <strong><code>code</code></strong> <code>code</code><strong><code>code</code></strong> <code>code</code></li>
+<li><code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong><code>code</code> <strong><code>code</code></strong> <code>code</code><strong><code>code</code></strong> <code>code</code></li>
+<li><code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong><code>code</code><strong><code>code</code></strong> <code>code</code><strong><code>code</code></strong> <code>code</code></li>
+<li><code>code</code> <strong><code>code</code></strong> <code>code</code> <strong><code>code</code></strong> <code>code</code>
+  <strong><code>code</code> <code>code</code></strong><code>code</code><strong><code>code</code></strong> <code>code</code><strong><code>code</code></strong> <code>code</code></li>
+</ul>
+</li>
+</ul>
+<p>Where:</p>
+<ul>
+<li><code>code</code> / <code>code</code>: an expression which evaluates to an array / object to iterate over.</li>
+<li><code>code</code>: local variable which will refer to each item in the <code>code</code> or each property value
+ of <code>code</code> during iteration.</li>
+<li><code>code</code>: local variable which will refer to a property name in <code>code</code> during iteration.</li>
+<li><code>code</code>: The result of this expression will be the label for <code>code</code> element. The
+<code>code</code> will most likely refer to the <code>code</code> variable (e.g. <code>code</code>).</li>
+<li><code>code</code>: The result of this expression will be bound to the model of the parent <code>code</code>
+ element. If not specified, <code>code</code> expression will default to <code>code</code>.</li>
+<li><code>code</code>: The result of this expression will be used to group options using the <code>code</code>
+ DOM element.</li>
+<li><code>code</code>: Used when working with an array of objects. The result of this expression will be
+ used to identify the objects in the array. The <code>code</code> will most likely refer to the
+<code>code</code> variable (e.g. <code>code</code>).</li>
+</ul>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="ng-directive-page ng-directive-select-page"><h4 id="example_source">Source</h4>
+<div source-edit="" source-edit-deps="a.js" source-edit-html="index.html-129" source-edit-css="" source-edit-js="script.js-128" source-edit-json="" source-edit-unit="" source-edit-scenario="" source-edit-protractor="protractorTest.js-130"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre>pre</pre>
+<script>script</script>
+</div>
+<div class="tab-pane" title="Protractor e2e test">
+<pre class="prettyprint linenums" ng-set-text="protractorTest.js-130"></pre>
+<script>script</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="" ng-set-html="index.html-129" ng-eval-javascript="script.js-128"></div>
+</div></div>
+</div>

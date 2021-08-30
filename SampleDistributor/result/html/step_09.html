@@ -1,0 +1,51 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/tutorial/step_09.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code> module and register
+your custom filter with this module:</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>The name of our filter is &quot;checkmark&quot;. The <code>code</code> evaluates to either <code>code</code> or <code>code</code>, and we
+return one of the two unicode characters we have chosen to represent true (<code>code</code> -&gt; ✓) or false (<code>code</code> -&gt; ✘).</p>
+<p>Now that our filter is ready, we need to register the <code>code</code> module as a dependency for
+our main <code>code</code> module.</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<h3 id="template">Template</h3>
+<p>Since the filter code lives in the <code>code</code> file, we need to include this file in our
+layout template.</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>The syntax for using filters in Angular templates is as follows:</p>
+<pre>pre</pre>
+<p>Let&#39;s employ the filter in the phone details template:</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<h3 id="test">Test</h3>
+<p>Filters, like any other component, should be tested and these tests are very easy to write.</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>We must call <code>code</code> before any of
+our filter tests execute. This call loads our <code>code</code> module into the injector
+for this test run.</p>
+<p>Note that we call the helper function, <code>code</code>, to get
+access to the filter that we want to test.  See <a href="api/angular.mock.inject"><code>code</code></a>.</p>
+<p>You should now see the following output in the Karma tab:</p>
+<pre>pre</pre>
+<h2 id="experiments">Experiments</h2>
+<ul>
+<li><p>Let&#39;s experiment with some of the <a href="api/ng.$filterProvider"><code>code</code></a> and add the
+following bindings to <code>code</code>:</p>
+<ul>
+<li><code>code</code></li>
+<li><code>code</code></li>
+<li><code>code</code></li>
+<li><code>code</code></li>
+</ul>
+</li>
+<li><p>We can also create a model with an input element, and combine it with a filtered binding. Add
+the following to index.html:</p>
+<pre>pre</pre>
+</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Now that you have learned how to write and test a custom filter, go to <a href="tutorial/step_10">step 10</a> to
+learn how we can use Angular to enhance the phone details page further.</p>
+<ul doc-tutorial-nav="9"></ul></div></div>

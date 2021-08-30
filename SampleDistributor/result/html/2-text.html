@@ -1,0 +1,25 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Hello Mozilla</title>
+        <script>script</script>
+        <script src="a.js"></script>
+    </head>
+
+    <body style="margin : 0px; overflow: hidden;">
+		<a-scene embedded arjs="sourceType: webcam;">
+            <a-marker-camera preset="hiro">
+                
+                <a-entity rotation="-120 0 0"> 
+                    <a-entity 
+                        position="-1 0.1 0"
+                        material="color: red"
+                        scale="0.5 0.5 0.5"
+                        text-geometry="value: Hello Mozilla">
+                    </a-entity>
+                </a-entity>
+                
+            </a-marker-camera>
+		</a-scene>
+    </body>
+</html>

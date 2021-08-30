@@ -1,0 +1,89 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/misc/faq.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code></a>.</p>
+<p>Due to a change to use <code>code</code>/<code>code</code> rather than <code>code</code>/<code>code</code>, Angular 1.2 only operates with
+jQuery 1.7.1 or above.</p>
+<h4 id="faq_questions_what-is-testability-like-in-angular">What is testability like in Angular?</h4>
+<p>Very testable and designed this way from ground up. It has an integrated dependency injection
+framework, provides mocks for many heavy dependencies (server-side communication). See
+<a href="api/ng">service</a> for details.</p>
+<h4 id="faq_questions_how-can-i-learn-more-about-angular">How can I learn more about Angular?</h4>
+<p>Watch the July 17, 2012 talk
+&quot;<a href="http://www.youtube.com/watch?v=1CpiB3Wk25U">AngularJS Intro + Dependency Injection</a>&quot;.</p>
+<h4 id="faq_questions_how-is-angular-licensed">How is Angular licensed?</h4>
+<p>The <a href="https://github.com/angular/angular.js/blob/master/LICENSE">MIT License</a>.</p>
+<h4 id="faq_questions_can-i-download-and-use-the-angular-logo-artwork">Can I download and use the Angular logo artwork?</h4>
+<p>Yes! You can find design files in our github repository, under &quot;<a href="https://github.com/angular/angular.js/tree/master/images/logo">angular.js/images/logo</a>&quot;
+The logo design is licensed under a &quot;<a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>&quot;. If you have some other use in mind, contact us.</p>
+<h4 id="faq_questions_how-can-i-get-some-angularjs-schwag">How can I get some AngularJS schwag?</h4>
+<p>We often bring a few t-shirts and stickers to events where we&#39;re presenting. If you want to order your own, the folks who
+make our schwag will be happy to do a custom run for you, based on our existing template. By using the design they have on file,
+they&#39;ll waive the setup costs, and you can order any quantity you need.</p>
+<p><strong>Stickers</strong>
+For orders of 250 stickers or more within Canada or the United States, contact Tom Witting (or anyone in sales) via email at tom@stickergiant.com, and tell him you want to order some AngularJS
+stickers just like the ones in job #42711. You&#39;ll have to give them your own info for billing and shipping.</p>
+<p>As long as the design stays exactly the same, <a href="http://www.stickergiant.com">StickerGiant</a> will give you a reorder discount.</p>
+<p>For a smaller order, or for other countries, we suggest downloading the logo artwork and making your own.</p>
+<h3 id="faq_common-pitfalls">Common Pitfalls</h3>
+<p>The Angular support channel (#angularjs on Freenode) sees a number of recurring pitfalls that new users of Angular fall into.
+This document aims to point them out before you discover them the hard way.</p>
+<h4 id="faq_common-pitfalls_dom-manipulation">DOM Manipulation</h4>
+<p>Stop trying to use jQuery to modify the DOM in controllers. Really.
+That includes adding elements, removing elements, retrieving their contents, showing and hiding them.
+Use built-in directives, or write your own where necessary, to do your DOM manipulation.
+See below about duplicating functionality.</p>
+<p>If you&#39;re struggling to break the habit, consider removing jQuery from your app.
+Really. Angular has the $http service and powerful directives that make it almost always unnecessary.
+Angular&#39;s bundled jQLite has a handful of the features most commonly used in writing Angular directives, especially binding to events.</p>
+<h4 id="faq_common-pitfalls_trying-to-duplicate-functionality-that-already-exists">Trying to duplicate functionality that already exists</h4>
+<p>There&#39;s a good chance that your app isn&#39;t the first to require certain functionality.
+There are a few pieces of Angular that are particularly likely to be reimplemented out of old habits.</p>
+<p><strong>ng-repeat</strong></p>
+<p><code>code</code> gets this a lot.
+People try to use jQuery (see above) to add more elements to some container as they&#39;re fetched from the server.
+No, bad dog.
+This is what <code>code</code> is for, and it does its job very well.
+Store the data from the server in an array on your <code>code</code>, and bind it to the DOM with <code>code</code>.</p>
+<p><strong>ng-show</strong></p>
+<p><code>code</code> gets this frequently too.
+Conditionally showing and hiding things using jQuery is a common pattern in other apps, but Angular has a better way.
+<code>code</code> (and <code>code</code>) conditionally show and hide elements based on boolean expressions.
+Describe the conditions for showing and hiding an element in terms of <code>code</code> variables:</p>
+<pre>pre</pre>
+<p>Note also the counterpart <code>code</code> and similar <code>code</code>.
+Note especially the powerful <code>code</code> that should be used instead of several mutually exclusive <code>code</code>s.</p>
+<p><strong>ng-class</strong></p>
+<p><code>code</code> is the last of the big three.
+Conditionally applying classes to elements is another thing commonly done manually using jQuery.
+Angular, of course, has a better way.
+You can give <code>code</code> a whitespace-separated set of class names, and then it&#39;s identical to ordinary <code>code</code>.
+That&#39;s not very exciting, so there&#39;s a second syntax:</p>
+<pre>pre</pre>
+<p>Where you give <code>code</code> an object, whose keys are CSS class names and whose values are conditional expressions using <code>code</code> variables.
+The element will then have all the classes whose conditions are truthy, and none of those whose conditions are falsy.</p>
+<p>Note also the handy <code>code</code> and <code>code</code>, and the related though somewhat different <code>code</code>.</p>
+<h4 id="faq_common-pitfalls"><code>code</code> and <code>code</code></h4>
+<p>Angular&#39;s two-way data binding is the root of all awesome in Angular.
+However, it&#39;s not magic, and there are some situations where you need to give it a nudge in the right direction.</p>
+<p>When you bind a value to an element in Angular using <code>code</code>, <code>code</code>, etc., Angular creates a <code>code</code> on that value.
+Then whenever a value on a scope changes, all <code>code</code>es observing that element are executed, and everything updates.</p>
+<p>Sometimes, usually when you&#39;re writing a custom directive, you will have to define your own <code>code</code> on a scope value to make the directive react to changes.</p>
+<p>On the flip side, sometimes you change a scope value in some code but the app doesn&#39;t react to it.
+Angular checks for scope variable changes after pieces of your code have finished running; for example, when <code>code</code> calls a function on your scope, Angular will check for changes and react.
+However, some code is outside of Angular and you&#39;ll have to call <code>code</code> yourself to trigger the update.
+This is most commonly seen in event handlers in custom directives.</p>
+<h4 id="faq_common-pitfalls_combining-with-other-directives">Combining <code>code</code> with other directives</h4>
+<p><code>code</code> is extremely useful, one of the most powerful directives in Angular.
+However the transformation it applies to the DOM is substantial.
+Therefore applying other directives (such as <code>code</code>, <code>code</code> and others) to the same element as <code>code</code> generally leads to problems.</p>
+<p>If you want to apply a directive to the whole repeat, wrap the repeat in a parent element and put it there.
+If you want to apply a directive to each inner piece of the repeat, put it on a child of the element with <code>code</code>.</p>
+<h4 id="faq_common-pitfalls_-exists,-but-it-can-be-used-for-evil"><code>code</code> exists, but it can be used for evil</h4>
+<p>Scopes in Angular form a hierarchy, prototypically inheriting from a root scope at the top of the tree.
+Usually this can be ignored, since most views have a controller, and therefore a scope, of their own.</p>
+<p>Occasionally there are pieces of data that you want to make global to the whole app.
+For these, you can inject <code>code</code> and set values on it like any other scope.
+Since the scopes inherit from the root scope, these values will be available to the expressions attached to directives like <code>code</code> just like values on your local <code>code</code>.</p>
+<p>Of course, global state sucks and you should use <code>code</code> sparingly, like you would (hopefully) use with global variables in any language.
+In particular, don&#39;t use it for code, only data.
+If you&#39;re tempted to put a function on <code>code</code>, it&#39;s almost always better to put it in a service that can be injected where it&#39;s needed, and more easily tested.</p>
+<p>Conversely, don&#39;t create a service whose only purpose in life is to store and return bits of data.</p>
+</div></div>

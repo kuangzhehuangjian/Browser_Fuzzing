@@ -1,0 +1,57 @@
+/* ----------------------------------- *
+ * Lists
+ * ----------------------------------- */
+
+#unordered-list {
+  list-style-type: square;
+}
+
+
+#ordered-list {
+  list-style-type: upper-alpha;
+}
+
+
+#nav-inline-block li {
+  display: inline-block;
+}
+
+
+#nav-floats li {
+  display: block;
+  float: left;
+  padding-right: 8px;
+}
+
+
+#nav-styled,
+#nav-styled ul {
+  padding: 0;
+  margin: 0;
+}
+#nav-styled li {
+  float: left;
+  display: block;
+  width: 20%;
+  text-align: center;
+}
+#nav-styled a {
+  display: block;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #838CC9;
+  border-bottom: 4px solid transparent;
+  transition: border 0.5s;
+}
+#nav-styled a:hover {
+  color: #C96349;
+  border-color: #C96349;
+}
+
+
+
+
+

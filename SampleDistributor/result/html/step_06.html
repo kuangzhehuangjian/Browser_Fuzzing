@@ -1,0 +1,38 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/tutorial/step_06.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code> file contains unique ids and image urls for each of the phones. The
+urls point to the <code>code</code> directory.</p>
+<p><strong><code>code</code></strong> (sample snippet):
+<pre>pre</pre>
+<h3 id="template">Template</h3>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>To dynamically generate links that will in the future lead to phone detail pages, we used the
+now-familiar double-curly brace binding in the <code>code</code> attribute values. In step 2, we added the
+<code>code</code> binding as the element content. In this step the <code>code</code> binding is used in
+the element attribute.</p>
+<p>We also added phone images next to each record using an image tag with the <a href="api/ng.directive:ngSrc"><code>code</code></a> directive. That directive prevents the
+browser from treating the angular <code>code</code> markup literally, and initiating a request to
+invalid url <code>code</code>, which it would have done if we had only
+specified an attribute binding in a regular <code>code</code> attribute (<code>code</code>).
+Using the <code>code</code> directive prevents the browser from making an http request to an invalid location.</p>
+<h3 id="test">Test</h3>
+<p><strong><code>code</code></strong>:
+<pre>pre</pre>
+<p>We added a new end-to-end test to verify that the app is generating correct links to the phone
+views that we will implement in the upcoming steps.</p>
+<p>You can now rerun <code>code</code> or refresh the browser tab with the end-to-end test
+runner to see the tests run, or you can see them running on <a href="http://angular.github.com/angular-phonecat/step-6/test/e2e/runner.html">Angular&#39;s server</a>.</p>
+<h2 id="experiments">Experiments</h2>
+<ul>
+<li><p>Replace the <code>code</code> directive with a plain old <code>code</code> attribute. Using tools such as Firebug,
+or Chrome&#39;s Web Inspector, or inspecting the webserver access logs, confirm that the app is indeed
+making an extraneous request to <code>code</code> (or
+<code>code</code>).</p>
+<p>The issue here is that the browser will fire a request for that invalid image address as soon as
+it hits the <code>code</code> tag, which is before Angular has a chance to evaluate the expression and inject
+the valid address.</p>
+</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Now that you have added phone images and links, go to <a href="tutorial/step_07">step 7</a> to learn about Angular
+layout templates and how Angular makes it easy to create applications that have multiple views.</p>
+<ul doc-tutorial-nav="6"></ul></div></div>

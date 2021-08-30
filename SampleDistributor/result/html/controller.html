@@ -1,0 +1,128 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/controller.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code></a>
+directive, Angular will instantiate a new Controller object, using the specified Controller&#39;s
+<strong>constructor function</strong>.  A new <strong>child scope</strong> will be available as an injectable parameter to the
+Controller&#39;s constructor function as <code>code</code>.</p>
+<p>Use Controllers to:</p>
+<ul>
+<li>Set up the initial state of the <code>code</code> object.</li>
+<li>Add behavior to the <code>code</code> object.</li>
+</ul>
+<h2 id="setting-up-the-initial-state-of-a-object">Setting up the initial state of a <code>code</code> object</h2>
+<p>Typically, when you create an application you need to set up the initial state for the Angular
+<code>code</code>. You set up the initial state of a scope by attaching properties to the <code>code</code> object.
+The properties contain the <strong>view model</strong> (the model that will be presented by the view).  All the
+<code>code</code> properties will be available to the template at the point in the DOM where the Controller
+is registered.</p>
+<p>The following example shows a very simple constructor function for a Controller, <code>code</code>,
+which attaches a <code>code</code> property containing the string <code>code</code> to the <code>code</code>:</p>
+<pre>pre</pre>
+<p>Once the Controller has been attached to the DOM, the <code>code</code> property can be data-bound to the
+template:</p>
+<pre>pre</pre>
+<p><strong>NOTE</strong>: Although Angular allows you to create Controller functions in the global scope, this is
+not recommended.  In a real application you should use the <code>code</code> method of your
+<a href="guide/module">Angular Module</a> for your application as follows:</p>
+<pre>pre</pre>
+<p>We have used an <strong>inline injection annotation</strong> to explicitly specify the dependency
+of the Controller on the <code>code</code> service provided by Angular. See the guide on 
+<a href="http://docs.angularjs.org/guide/di">Dependency Injection</a> for more information.</p>
+<h2 id="adding-behavior-to-a-scope-object">Adding Behavior to a Scope Object</h2>
+<p>In order to react to events or execute computation in the view we must provide behavior to the
+scope. We add behavior to the scope by attaching methods to the <code>code</code> object.  These methods are
+then available to be called from the template/view.</p>
+<p>The following example uses a Controller to add a method to the scope, which doubles a number:</p>
+<pre>pre</pre>
+<p>Once the Controller has been attached to the DOM, the <code>code</code> method can be invoked in an Angular
+expression in the template:</p>
+<pre>pre</pre>
+<p>As discussed in the <a href="guide/concepts">Concepts</a> section of this guide, any
+objects (or primitives) assigned to the scope become model properties. Any methods assigned to
+the scope are available in the template/view, and can be invoked via angular expressions
+and <code>code</code> event handler directives (e.g. <a href="api/ng.directive:ngClick"><code>code</code></a>).</p>
+<h2 id="using-controllers-correctly">Using Controllers Correctly</h2>
+<p>In general, a Controller shouldn&#39;t try to do too much. It should contain only the business logic
+needed for a single view.</p>
+<p>The most common way to keep Controllers slim is by encapsulating work that doesn&#39;t belong to
+controllers into services and then using these services in Controllers via dependency injection.
+This is discussed in the <a href="guide/di">Dependency Injection</a> <a href="guide/dev_guide.services">Services</a> sections of this guide.</p>
+<p>Do not use Controllers for:</p>
+<ul>
+<li>Any kind of DOM manipulation — Controllers should contain only business logic. DOM
+manipulation (the presentation logic of an application) is well known for being hard to test.
+Putting any presentation logic into Controllers significantly affects testability of the business
+logic. Angular offers <a href="guide/databinding">databinding</a> for automatic DOM manipulation. If
+you have to perform your own manual DOM manipulation, encapsulate the presentation logic in
+<a href="guide/directive">directives</a>.</li>
+<li>Input formatting — Use <a href="guide/forms">angular form controls</a> instead.</li>
+<li>Output filtering — Use <a href="guide/filter">angular filters</a> instead.</li>
+<li>Sharing stateless or stateful code across Controllers — Use <a href="guide/dev_guide.services">angular services</a> instead.</li>
+<li>Managing the life-cycle of other components (for example, to create service instances).</li>
+</ul>
+<h2 id="associating-controllers-with-angular-scope-objects">Associating Controllers with Angular Scope Objects</h2>
+<p>You can associate Controllers with scope objects implicitly via the <a href="api/ng.directive:ngController"><code>code</code></a> or <a href="api/ngRoute.$route">$route service</a>.</p>
+<h3 id="associating-controllers-with-angular-scope-objects_simple-spicy-controller-example">Simple Spicy Controller Example</h3>
+<p>To illustrate further how Controller components work in Angular, let&#39;s create a little app with the
+following components:</p>
+<ul>
+<li>A <a href="guide/templates">template</a> with two buttons and a simple message</li>
+<li>A model consisting of a string named <code>code</code></li>
+<li>A Controller with two functions that set the value of <code>code</code></li>
+</ul>
+<p>The message in our template contains a binding to the <code>code</code> model, which by default is set to the
+string &quot;very&quot;. Depending on which button is clicked, the <code>code</code> model is set to <code>code</code> or
+<code>code</code>, and the message is automatically updated by data-binding.</p>
+<h3 id="associating-controllers-with-angular-scope-objects_source">Source</h3>
+<div source-edit="spicyApp1" source-edit-deps="a.js" source-edit-html="index.html-191" source-edit-css="" source-edit-js="script.js-190" source-edit-json="" source-edit-unit="" source-edit-scenario="" source-edit-protractor=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre>pre</pre>
+<script>script</script>
+</div>
+</div><h3 id="associating-controllers-with-angular-scope-objects_demo">Demo</h3>
+<div class="well doc-example-live animate-container" ng-embed-app="spicyApp1" ng-set-html="index.html-191" ng-eval-javascript="script.js-190"></div>
+<p>Things to notice in the example above:</p>
+<ul>
+<li>The <code>code</code> directive is used to (implicitly) create a scope for our template, and the
+scope is augmented (managed) by the <code>code</code> Controller.</li>
+<li><code>code</code> is just a plain JavaScript function. As an (optional) naming convention the name
+starts with capital letter and ends with &quot;Ctrl&quot; or &quot;Controller&quot;.</li>
+<li>Assigning a property to <code>code</code> creates or updates the model.</li>
+<li>Controller methods can be created through direct assignment to scope (see the <code>code</code> method)</li>
+<li>The Controller methods and properties are available in the template (for the <code>code</code> element and
+its children).</li>
+</ul>
+<h3 id="associating-controllers-with-angular-scope-objects_spicy-arguments-example">Spicy Arguments Example</h3>
+<p>Controller methods can also take arguments, as demonstrated in the following variation of the
+previous example.</p>
+<h3 id="associating-controllers-with-angular-scope-objects_source">Source</h3>
+<div source-edit="spicyApp2" source-edit-deps="a.js" source-edit-html="index.html-193" source-edit-css="" source-edit-js="script.js-192" source-edit-json="" source-edit-unit="" source-edit-scenario="" source-edit-protractor=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre>pre</pre>
+<script>script</script>
+</div>
+</div><h3 id="associating-controllers-with-angular-scope-objects_demo">Demo</h3>
+<div class="well doc-example-live animate-container" ng-embed-app="spicyApp2" ng-set-html="index.html-193" ng-eval-javascript="script.js-192"></div>
+<p>Notice that the <code>code</code> Controller now defines just one method called <code>code</code>, which takes one
+argument called <code>code</code>. The template then refers to this Controller method and passes in a string
+constant <code>code</code> in the binding for the first button and a model property <code>code</code> (bound to an
+input box) in the second button.</p>
+<h3 id="associating-controllers-with-angular-scope-objects_scope-inheritance-example">Scope Inheritance Example</h3>
+<p>It is common to attach Controllers at different levels of the DOM hierarchy.  Since the 
+<a href="api/ng.directive:ngController"><code>code</code></a> directive creates a new child scope, we get a
+hierarchy of scopes that inherit from each other.  The <code>code</code> that each Controller receives will
+have access to properties and methods defined by Controllers higher up the hierarchy.
+See <a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes">Understanding Scopes</a> for
+more information about scope inheritance.</p>
+<h3 id="associating-controllers-with-angular-scope-objects_source">Source</h3>
+<div source-edit="scopeInheritance" source-edit-deps="a.js" source-edit-html="index.html-196" source-edit-css="style.css-195" source-edit-js="script.js-194" source-edit-json="" source-edit-unit="" source-edit-scenario="" source-edit-protractor=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre>pre</pre>
+<style>style</style>
+</div>
+<div class="tab-pane" title="a.js">
+<pre>pre</pre>
+<p><strong>Controller Test:</strong>
+<pre>pre</pre>
+<p>If you need to test a nested Controller you need to create the same scope hierarchy
+in your test that exists in the DOM:</p>
+<pre>pre</pre>
+</div></div>

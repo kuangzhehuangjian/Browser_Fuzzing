@@ -1,0 +1,29 @@
+<a href="http://github.com/angular/angular.js/tree/v1.2.13/src/ng/directive/ngCsp.js#L3" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="a.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>
+<div><span class="hint">directive in module <code>code</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ng-directive-page ng-directive-ngcsp-page"><p>Enables <a href="https://developer.mozilla.org/en/Security/CSP">CSP (Content Security Policy)</a> support.</p>
+<p>This is necessary when developing things like Google Chrome Extensions.</p>
+<p>CSP forbids apps to use <code>code</code> or <code>code</code> generated functions (among other things).
+For us to be compatible, we just need to implement the &quot;getterFn&quot; in $parse without violating
+any of these restrictions.</p>
+<p>AngularJS uses <code>code</code> generated functions as a speed optimization. Applying the <code>code</code>
+directive will cause Angular to use CSP compatibility mode. When this mode is on AngularJS will
+evaluate all expressions up to 30% slower than in non-CSP mode, but no security violations will
+be raised.</p>
+<p>CSP forbids JavaScript to inline stylesheet rules. In non CSP mode Angular automatically
+includes some CSS rules (e.g. <a href="api/ng.directive:ngCloak"><code>code</code></a>).
+To make those directives work in CSP mode, include the <code>code</code> manually.</p>
+<p>In order to use this feature put the <code>code</code> directive on the root element of the application.</p>
+<p><em>Note: This directive is only available in the <code>code</code> and <code>code</code> attribute form.</em></p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre>pre</pre>
+</div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="ng-directive-page ng-directive-ngcsp-page"><p>This example shows how to apply the <code>code</code> directive to the <code>code</code> tag.
+<pre>pre</pre>
+</div></div>
+</div>

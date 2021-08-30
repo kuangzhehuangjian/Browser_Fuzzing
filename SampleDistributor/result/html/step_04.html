@@ -1,0 +1,69 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/tutorial/step_04.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>:</strong>
+<pre>pre</pre>
+<p>We made the following changes to the <code>code</code> template:</p>
+<ul>
+<li>First, we added a <code>code</code> html element named <code>code</code>, so that our users can pick from the
+two provided sorting options.</li>
+</ul>
+<p><img class="diagram" src="a.png"></p>
+<ul>
+<li>We then chained the <code>code</code> filter with <a href="api/ng.filter:orderBy"><code>code</code></code></a>
+filter to further process the input into the repeater. <code>code</code> is a filter that takes an input
+array, copies it and reorders the copy which is then returned.</li>
+</ul>
+<p>Angular creates a two way data-binding between the select element and the <code>code</code> model.
+<code>code</code> is then used as the input for the <code>code</code> filter.</p>
+<p>As we discussed in the section about data-binding and the repeater in step 3, whenever the model
+changes (for example because a user changes the order with the select drop down menu), Angular&#39;s
+data-binding will cause the view to automatically update. No bloated DOM manipulation code is
+necessary!</p>
+<h3 id="controller">Controller</h3>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<ul>
+<li><p>We modified the <code>code</code> model - the array of phones - and added an <code>code</code> property to each phone
+record. This property is used to order phones by age.</p>
+</li>
+<li><p>We added a line to the controller that sets the default value of <code>code</code> to <code>code</code>. If we had
+not set a default value here, the <code>code</code> filter would remain uninitialized until our 
+user picked an option from the drop down menu.</p>
+<p>This is a good time to talk about two-way data-binding. Notice that when the app is loaded in the
+browser, &quot;Newest&quot; is selected in the drop down menu. This is because we set <code>code</code> to <code>code</code>
+in the controller. So the binding works in the direction from our model to the UI. Now if you
+select &quot;Alphabetically&quot; in the drop down menu, the model will be updated as well and the phones
+will be reordered. That is the data-binding doing its job in the opposite direction — from the UI
+to the model.</p>
+</li>
+</ul>
+<h3 id="test">Test</h3>
+<p>The changes we made should be verified with both a unit test and an end-to-end test. Let&#39;s look at
+the unit test first.</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>The unit test now verifies that the default ordering property is set.</p>
+<p>We used Jasmine&#39;s API to extract the controller construction into a <code>code</code> block, which is
+shared by all tests in the parent <code>code</code> block.</p>
+<p>You should now see the following output in the Karma tab:</p>
+<pre>pre</pre>
+<p>Let&#39;s turn our attention to the end-to-end test.</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>The end-to-end test verifies that the ordering mechanism of the select box is working correctly.</p>
+<p>You can now rerun <code>code</code> or refresh the browser tab with the end-to-end test
+<code>code</code> to see the tests run, or you can see them running on <a href="http://angular.github.com/angular-phonecat/step-4/test/e2e/runner.html">Angular&#39;s server</a>.</p>
+<h2 id="experiments">Experiments</h2>
+<ul>
+<li><p>In the <code>code</code> controller, remove the statement that sets the <code>code</code> value and
+you&#39;ll see that Angular will temporarily add a new &quot;unknown&quot; option to the drop-down list and the
+ordering will default to unordered/natural order.</p>
+</li>
+<li><p>Add an <code>code</code> binding into the <code>code</code> template to display its current value as
+text.</p>
+</li>
+<li><p>Reverse the sort order by adding a <code>code</code> symbol before the sorting value: <code>code</code></p>
+</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Now that you have added list sorting and tested the app, go to <a href="tutorial/step_05">step 5</a> to learn
+about Angular services and how Angular uses dependency injection.</p>
+<ul doc-tutorial-nav="4"></ul></div></div>

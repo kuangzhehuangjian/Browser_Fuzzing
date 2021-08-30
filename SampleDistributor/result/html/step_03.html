@@ -1,0 +1,89 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/tutorial/step_03.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>:</strong>
+<pre>pre</pre>
+<p>We added a standard HTML <code>code</code> tag and used Angular&#39;s
+<a href="api/ng.filter:filter"><code>code</code></a> function to process the input for the
+<a href="api/ng.directive:ngRepeat"><code>code</code></a> directive.</p>
+<p>This lets a user enter search criteria and immediately see the effects of their search on the phone
+list. This new code demonstrates the following:</p>
+<ul>
+<li><p>Data-binding: This is one of the core features in Angular. When the page loads, Angular binds the
+name of the input box to a variable of the same name in the data model and keeps the two in sync.</p>
+<p>In this code, the data that a user types into the input box (named <strong><code>code</code></strong>) is immediately
+available as a filter input in the list repeater (<code>code</code><strong><code>code</code></strong>). When
+changes to the data model cause the repeater&#39;s input to change, the repeater efficiently updates
+the DOM to reflect the current state of the model.</p>
+</li>
+</ul>
+<p><img  class="diagram" src="a.png"></p>
+<ul>
+<li><p>Use of the <code>code</code> filter: The <a href="api/ng.filter:filter"><code>code</code></a> function uses the
+<code>code</code> value to create a new array that contains only those records that match the <code>code</code>.</p>
+<p><code>code</code> automatically updates the view in response to the changing number of phones returned
+by the <code>code</code> filter. The process is completely transparent to the developer.</p>
+</li>
+</ul>
+<h3 id="test">Test</h3>
+<p>In Step 2, we learned how to write and run unit tests. Unit tests are perfect for testing
+controllers and other components of our application written in JavaScript, but they can&#39;t easily
+test DOM manipulation or the wiring of our application. For these, an end-to-end test is a much
+better choice.</p>
+<p>The search feature was fully implemented via templates and data-binding, so we&#39;ll write our first
+end-to-end test, to verify that the feature works.</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>Even though the syntax of this test looks very much like our controller unit test written with
+Jasmine, the end-to-end test uses APIs of <a href="guide/dev_guide.e2e-testing">Angular&#39;s end-to-end test runner</a>.</p>
+<p>To run the end-to-end test, open one of the following in a new browser tab:</p>
+<ul>
+<li>node.js users: <a href="http://localhost:8000/test/e2e/runner.html"><a href="http://localhost:8000/test/e2e/runner.html">http://localhost:8000/test/e2e/runner.html</a></a></li>
+<li>users with other http servers:
+<code>code</code></li>
+<li>casual reader: <a href="http://angular.github.com/angular-phonecat/step-3/test/e2e/runner.html"><a href="http://angular.github.com/angular-phonecat/step-3/test/e2e/runner.html">http://angular.github.com/angular-phonecat/step-3/test/e2e/runner.html</a></a></li>
+</ul>
+<p>Previously we&#39;ve seen how Karma can be used to execute unit tests. Well, it can also run the
+end-to-end tests! Use <code>code</code> script for that. End-to-end tests are slow, so unlike
+with unit tests, Karma will exit after the test run and will not automatically rerun the test
+suite on every file change. To rerun the test suite, execute the <code>code</code> script again.</p>
+<p>Note: You must ensure you&#39;ve installed the karma-ng-scenario framework plugin prior to running the
+<code>code</code> script. You can do this by issuing <code>code</code> into your terminal.</p>
+<p>This test verifies that the search box and the repeater are correctly wired together. Notice how
+easy it is to write end-to-end tests in Angular. Although this example is for a simple test, it
+really is that easy to set up any functional, readable, end-to-end test.</p>
+<h2 id="experiments">Experiments</h2>
+<ul>
+<li><p>Display the current value of the <code>code</code> model by adding a <code>code</code> binding into the
+<code>code</code> template, and see how it changes when you type in the input box.</p>
+</li>
+<li><p>Let&#39;s see how we can get the current value of the <code>code</code> model to appear in the HTML page title.</p>
+<p>You might think you could just add the <code>code</code> to the title tag element as follows:</p>
+<pre>pre</pre>
+<p>However, when you reload the page, you won&#39;t see the expected result. This is because the &quot;query&quot;
+model lives in the scope, defined by the <code>code</code> directive, on the body element:</p>
+<pre>pre</pre>
+<p>If you want to bind to the query model from the <code>code</code> element, you must <strong>move</strong> the
+<code>code</code> declaration to the HTML element because it is the common parent of both the body
+and title elements:</p>
+<pre>pre</pre>
+<p>Be sure to <strong>remove</strong> the <code>code</code> declaration from the body element.</p>
+<p>While using double curlies works fine within the title element, you might have noticed that
+for a split second they are actually displayed to the user while the page is loading. A better
+solution would be to use the <a href="api/ng.directive:ngBind"><code>code</code></a> or <a href="api/ng.directive:ngBindTemplate"><code>code</code></a> directives, which are invisible to the user while the page is loading:</p>
+<pre>pre</pre>
+</li>
+<li><p>Add the following end-to-end test into the <code>code</code> block within <code>code</code>:</p>
+<pre>pre</pre>
+<p>Refresh the browser tab with the end-to-end test runner to see the test fail. To make the test
+pass, edit the <code>code</code> template to add a <code>code</code> or <code>code</code> element with <code>code</code> <code>code</code> and content
+with the <code>code</code> binding, prefixed by &quot;Current filter:&quot;. For instance:</p>
+<pre>pre</pre>
+</li>
+<li><p>Add a <code>code</code> statement inside of an end-to-end test and rerun it. You&#39;ll see the runner pause;
+this gives you the opportunity to explore the state of your application while it is displayed in
+the browser. The app is live! You can change the search query to prove it. Notice how useful this
+is for troubleshooting end-to-end tests.</p>
+</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>We have now added full text search and included a test to verify that search works! Now let&#39;s go on
+to <a href="tutorial/step_04">step 4</a> to learn how to add sorting capability to the phone app.</p>
+<ul doc-tutorial-nav="3"></ul></div></div>

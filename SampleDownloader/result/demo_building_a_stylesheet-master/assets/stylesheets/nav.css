@@ -1,0 +1,36 @@
+/* ----------------------------------- *
+ * Nav
+ * ----------------------------------- */
+
+#main-nav,
+#main-nav ul {
+  padding: 0;
+  margin: 0;
+}
+#main-nav li {
+  float: left;
+  display: block;
+  width: 20%;
+  text-align: center;
+}
+#main-nav a {
+  display: block;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #838CC9;
+  border-bottom: 4px solid transparent;
+  transition: border 0.5s;
+}
+#main-nav a:hover {
+  color: #C96349;
+  border-color: #C96349;
+}
+
+
+
+
+
+

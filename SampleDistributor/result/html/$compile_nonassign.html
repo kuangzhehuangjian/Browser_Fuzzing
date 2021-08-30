@@ -1,0 +1,18 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/error/compile/nonassign.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>
+<div><span class="hint">error in component <code>code</code>
+</span>
+</div>
+</h1>
+<div><pre>pre</pre>
+<h2 id="description">Description</h2>
+<div class="description"><div class="-compile-page -compile-nonassign-page"><p>This error occurs when a directive defines an isolate scope property
+(using the <code>code</code> mode in the <a href="api/ng.$compile#description_comprehensive-directive-api_directive-definition-object"><code>code</code> option</code></a> of a directive definition) but the directive is used with an expression that is not-assignable.</p>
+<p>In order for the two-way data-binding to work, it must be possible to write new values back into the path defined with the expression.</p>
+<p>For example, given a directive:</p>
+<pre>pre</pre>
+<p>Following are invalid uses of this directive:</p>
+<pre>pre</pre>
+<p>To resolve this error, always use path expressions with scope properties that are two-way data-bound:</p>
+<pre>pre</pre>
+</div></div>
+</div>

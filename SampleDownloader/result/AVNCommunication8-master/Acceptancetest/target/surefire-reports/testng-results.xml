@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="23557" started-at="2017-05-09T14:13:20Z" finished-at="2017-05-09T14:13:44Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="23557" started-at="2017-05-09T14:13:20Z" finished-at="2017-05-09T14:13:44Z">
+      <class name="acceptancetest.acat">
+        <test-method status="PASS" signature="checkin()[pri:0, instance:acceptancetest.acat@1cd072a9]" name="checkin" duration-ms="15419" started-at="2017-05-09T19:43:20Z" finished-at="2017-05-09T19:43:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkin -->
+        <test-method status="PASS" signature="repairticket()[pri:0, instance:acceptancetest.acat@1cd072a9]" name="repairticket" duration-ms="5157" started-at="2017-05-09T19:43:36Z" finished-at="2017-05-09T19:43:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- repairticket -->
+        <test-method status="PASS" signature="navigation()[pri:0, instance:acceptancetest.acat@1cd072a9]" name="navigation" duration-ms="2206" started-at="2017-05-09T19:43:41Z" finished-at="2017-05-09T19:43:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- navigation -->
+        <test-method status="PASS" signature="checkout()[pri:0, instance:acceptancetest.acat@1cd072a9]" name="checkout" duration-ms="742" started-at="2017-05-09T19:43:43Z" finished-at="2017-05-09T19:43:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkout -->
+      </class> <!-- acceptancetest.acat -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

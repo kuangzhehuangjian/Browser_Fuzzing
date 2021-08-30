@@ -1,0 +1,122 @@
+<a href="http://github.com/angular/angular.js/tree/v1.2.13/src/ng/directive/ngRepeat.js#L3" class="view-source btn btn-action"><i class="icon-zoom-in"> </i> View source</a><a href="a.js" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>
+<div><span class="hint">directive in module <code>code</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ng-directive-page ng-directive-ngrepeat-page"><p>The <code>code</code> directive instantiates a template once per item from a collection. Each template
+instance gets its own scope, where the given loop variable is set to the current collection item,
+and <code>code</code> is set to the item index or key.</p>
+<p>Special properties are exposed on the local scope of each template instance, including:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><a href="#" class="label type-hint type-hint-number">number</a></td>
+<td>iterator offset of the repeated element (0..length-1)</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><a href="#" class="label type-hint type-hint-boolean">boolean</a></td>
+<td>true if the repeated element is first in the iterator.</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><a href="#" class="label type-hint type-hint-boolean">boolean</a></td>
+<td>true if the repeated element is between the first and last in the iterator.</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><a href="#" class="label type-hint type-hint-boolean">boolean</a></td>
+<td>true if the repeated element is last in the iterator.</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><a href="#" class="label type-hint type-hint-boolean">boolean</a></td>
+<td>true if the iterator position <code>code</code> is even (otherwise false).</td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><a href="#" class="label type-hint type-hint-boolean">boolean</a></td>
+<td>true if the iterator position <code>code</code> is odd (otherwise false).</td>
+</tr>
+</tbody>
+</table>
+<p>Creating aliases for these properties is possible with <a href="api/ng.directive:ngInit"><code>code</code></code></a>.
+This may be useful when, for instance, nesting ngRepeats.</p>
+<h3 id="description_special-repeat-start-and-end-points">Special repeat start and end points</h3>
+<p>To repeat a series of elements instead of just one parent element, ngRepeat (as well as other ng directives) supports extending
+the range of the repeater by defining explicit start and end points by using <strong>ng-repeat-start</strong> and <strong>ng-repeat-end</strong> respectively.
+The <strong>ng-repeat-start</strong> directive works the same as <strong>ng-repeat</strong>, but will repeat all the HTML code (including the tag it&#39;s defined on)
+up to and including the ending HTML tag where <strong>ng-repeat-end</strong> is placed.</p>
+<p>The example below makes use of this feature:
+<pre>pre</pre>
+<p>And with an input of <a href="#" class="label type-hint type-hint-object">[&#39;A&#39;,&#39;B&#39;]</a> for the items variable in the example above, the output will evaluate to:
+<pre>pre</pre>
+<p>The custom start and end points for ngRepeat also support all other HTML directive syntax flavors provided in AngularJS (such
+as <strong>data-ng-repeat-start</strong>, <strong>x-ng-repeat-start</strong> and <strong>ng:repeat-start</strong>).</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre>pre</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+<li>This directive executes at priority level 1000.</li>
+</ul>
+</div>
+<h3 id="usage_animations">Animations</h3>
+<div class="animations"><ul><li>enter - when a new item is added to the list or when an item is revealed after a filter</li><li>leave - when an item is removed from the list or when an item is filtered out</li><li>move - when an adjacent item is filtered out causing a reorder or when the item contents are reordered</li></ul></div>
+<a href="api/ngAnimate.$animate">Click here</a> to learn more about the steps involved in the animation.<h4 id="usage_animations_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ngRepeat</td><td><a href="" class="label type-hint type-hint-repeat_expression">repeat_expression</a></td><td><div class="ng-directive-page ng-directive-ngrepeat-page"><p>The expression indicating how to enumerate a collection. These
+formats are currently supported:</p>
+<ul>
+<li><p><code>code</code> – where variable is the user defined loop variable and <code>code</code>
+is a scope expression giving the collection to enumerate.</p>
+<p>For example: <code>code</code>.</p>
+</li>
+<li><p><code>code</code> – where <code>code</code> and <code>code</code> can be any user defined identifiers,
+and <code>code</code> is the scope expression giving the collection to enumerate.</p>
+<p>For example: <code>code</code>.</p>
+</li>
+<li><p><code>code</code> – You can also provide an optional tracking function
+which can be used to associate the objects in the collection with the DOM elements. If no tracking function
+is specified the ng-repeat associates elements by identity in the collection. It is an error to have
+more than one tracking function to resolve to the same key. (This would mean that two distinct objects are
+mapped to the same DOM element, which is not possible.)  Filters should be applied to the expression,
+before specifying a tracking expression.</p>
+<p>For example: <code>code</code> is equivalent to `item in items track by $id(item)&#39;. This implies that the DOM elements
+will be associated by item identity in the array.</p>
+<p>For example: <code>code</code>. A built in <code>code</code> function can be used to assign a unique
+<code>code</code> property to each item in the array. This property is then used as a key to associated DOM elements
+with the corresponding item in the array by identity. Moving the same object in array would move the DOM
+element in the same way in the DOM.</p>
+<p>For example: <code>code</code> is a typical pattern when the items come from the database. In this
+case the object identity does not matter. Two objects are considered equivalent as long as their <code>code</code>
+property is same.</p>
+<p>For example: <code>code</code> is a pattern that might be used to apply a filter
+to items in conjunction with a tracking expression.</p>
+</li>
+</ul>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="ng-directive-page ng-directive-ngrepeat-page"><p>This example initializes the scope to a list of names and
+then uses <code>code</code> to display every person:
+  <h4 id="example_source">Source</h4>
+<div source-edit="" source-edit-deps="a.js" source-edit-html="index.html-111" source-edit-css="a.css" source-edit-js="" source-edit-json="" source-edit-unit="" source-edit-scenario="" source-edit-protractor="protractorTest.js-112"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre>pre</pre>
+<style>style</style>
+</div>
+<div class="tab-pane" title="Protractor e2e test">
+<pre class="prettyprint linenums" ng-set-text="protractorTest.js-112"></pre>
+<script>script</script>
+</div>
+</div><div class="pull-right"> <button class="btn btn-primary" ng-click="animationsOff=true" ng-hide="animationsOff">Animations on</button> <button class="btn btn-primary disabled" ng-click="animationsOff=false" ng-show="animationsOff">Animations off</button></div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-class="{'animations-off':animationsOff == true}" ng-embed-app="" ng-set-html="index.html-111" ng-eval-javascript=""></div>
+</div></div>
+</div>

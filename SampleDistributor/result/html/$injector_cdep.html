@@ -1,0 +1,18 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/error/injector/cdep.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>
+<div><span class="hint">error in component <code>code</code>
+</span>
+</div>
+</h1>
+<div><pre>pre</pre>
+<h2 id="description">Description</h2>
+<div class="description"><div class="-injector-page -injector-cdep-page"><p>This error occurs when the <a href="api/angular.injector"><code>code</code></a> tries to get
+a service that depends on itself, either directly or indirectly. To fix this,
+construct your dependency chain such that there are no circular dependencies.</p>
+<p>For example:</p>
+<pre>pre</pre>
+<p>When an instance of <code>code</code> is created, the service <code>code</code> will be created
+by the <code>code</code>. <code>code</code> depends on itself, which causes the <code>code</code>
+to detect a circular dependency and throw the error.</p>
+<p>For more information, see the <a href="guide/di">Dependency Injection Guide</a>.</p>
+</div></div>
+</div>

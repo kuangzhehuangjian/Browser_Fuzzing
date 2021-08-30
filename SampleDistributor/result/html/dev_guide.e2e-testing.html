@@ -1,0 +1,147 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/dev_guide.e2e-testing.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code> blocks
+(you can think of these as the requirements of your application), which in turn are made of
+<strong>commands</strong> and <strong>expectations</strong>. Commands tell the Runner to do something with the application
+(such as navigate to a page or click on a button), and expectations tell the Runner to assert
+something about the state (such as the value of a field or the current URL). If any expectation
+fails, the runner marks the <code>code</code>  as &quot;failed&quot; and continues on to the next one. Scenarios may also
+have <strong>beforeEach</strong> and <strong>afterEach</strong> blocks, which will be run before (or after) each <code>code</code>  block,
+regardless of whether they pass or fail.</p>
+<p><img src="a.png"></p>
+<p>In addition to the above elements, scenarios may also contain helper functions to avoid duplicating
+code in the <code>code</code> blocks.</p>
+<p>Here is an example of a simple scenario:
+<pre>pre</pre>
+<p>Note that
+<a href="https://github.com/angular/angular.js/blob/master/docs/content/guide/dev_guide.e2e-testing.ngdoc#L119"><code>code</code></a>
+finds the <code>code</code> element with <code>code</code> not <code>code</code>.</p>
+<p>This scenario describes the requirements of a Buzz Client, specifically, that it should be able to
+filter the stream of the user. It starts by entering a value in the input field with ng-model=&quot;user&quot;, clicking
+the only button on the page, and then it verifies that there are 10 items listed. It then enters
+&#39;Bees&#39; in the input field with ng-model=&#39;filterText&#39;  and verifies that the list is reduced to a single item.</p>
+<p>The API section below lists the available commands and expectations for the Runner.</p>
+<h2 id="api">API</h2>
+<p>Source: <a href="a.js"><a href="a.js">https://github.com/angular/angular.js/blob/master/src/ngScenario/dsl.js</a></a></p>
+<h3 id="api_pause">pause()</h3>
+<p>Pauses the execution of the tests until you call <code>code</code> in the console (or click the resume
+link in the Runner UI).</p>
+<h3 id="api_sleep">sleep(seconds)</h3>
+<p>Pauses the execution of the tests for the specified number of <code>code</code>.</p>
+<h3 id="api_browser">browser().navigateTo(url)</h3>
+<p>Loads the <code>code</code> into the test frame.</p>
+<h3 id="api_browser">browser().navigateTo(url, fn)</h3>
+<p>Loads the URL returned by <code>code</code> into the testing frame. The given <code>code</code> is only used for the test
+output. Use this when the destination URL is dynamic (that is, the destination is unknown when you
+write the test).</p>
+<h3 id="api_browser">browser().reload()</h3>
+<p>Refreshes the currently loaded page in the test frame.</p>
+<h3 id="api_browser">browser().window().href()</h3>
+<p>Returns the window.location.href of the currently loaded page in the test frame.</p>
+<h3 id="api_browser">browser().window().path()</h3>
+<p>Returns the window.location.pathname of the currently loaded page in the test frame.</p>
+<h3 id="api_browser">browser().window().search()</h3>
+<p>Returns the window.location.search of the currently loaded page in the test frame.</p>
+<h3 id="api_browser">browser().window().hash()</h3>
+<p>Returns the window.location.hash (without <code>code</code>) of the currently loaded page in the test frame.</p>
+<h3 id="api_browser">browser().location().url()</h3>
+<p>Returns the <a href="api/ng.$location"><code>code</code></a> of the currently loaded page in
+the test frame.</p>
+<h3 id="api_browser">browser().location().path()</h3>
+<p>Returns the <a href="api/ng.$location"><code>code</code></a> of the currently loaded page in
+the test frame.</p>
+<h3 id="api_browser">browser().location().search()</h3>
+<p>Returns the <a href="api/ng.$location"><code>code</code></a> of the currently loaded page
+in the test frame.</p>
+<h3 id="api_browser">browser().location().hash()</h3>
+<p>Returns the <a href="api/ng.$location"><code>code</code></a> of the currently loaded page in
+the test frame.</p>
+<h3 id="api_expect{matcher}">expect(future).{matcher}</h3>
+<p>Asserts the value of the given <code>code</code> satisfies the <code>code</code>. All API statements return a
+<code>code</code> object, which get a <code>code</code> assigned after they are executed. Matchers are defined using
+<code>code</code>, and they use the value of futures to run the expectation. For example:
+<code>code</code>. Available matchers
+are presented further down this document.</p>
+<h3 id="api_expect{matcher}">expect(future).not().{matcher}</h3>
+<p>Asserts the value of the given <code>code</code> satisfies the negation of the <code>code</code>.</p>
+<h3 id="api_using">using(selector, label)</h3>
+<p>Scopes the next DSL element selection.</p>
+<h3 id="api_binding">binding(name)</h3>
+<p>Returns the value of the first binding matching the given <code>code</code>.</p>
+<h3 id="api_input">input(name).enter(value)</h3>
+<p>Enters the given <code>code</code> in the text field with the corresponding ng-model <code>code</code>.</p>
+<h3 id="api_input">input(name).check()</h3>
+<p>Checks/unchecks the checkbox with the corresponding ng-model <code>code</code>.</p>
+<h3 id="api_input">input(name).select(value)</h3>
+<p>Selects the given <code>code</code> in the radio button with the corresponding ng-model <code>code</code>.</p>
+<h3 id="api_input">input(name).val()</h3>
+<p>Returns the current value of an input field with the corresponding ng-model <code>code</code>.</p>
+<h3 id="api_repeater">repeater(selector, label).count()</h3>
+<p>Returns the number of rows in the repeater matching the given jQuery <code>code</code>. The <code>code</code> is
+used for test output.</p>
+<h3 id="api_repeater">repeater(selector, label).row(index)</h3>
+<p>Returns an array with the bindings in the row at the given <code>code</code> in the repeater matching the
+given jQuery <code>code</code>. The <code>code</code> is used for test output.</p>
+<h3 id="api_repeater">repeater(selector, label).column(binding)</h3>
+<p>Returns an array with the values in the column with the given <code>code</code> in the repeater matching
+the given jQuery <code>code</code>. The <code>code</code> is used for test output.</p>
+<h3 id="api_select">select(name).option(value)</h3>
+<p>Picks the option with the given <code>code</code> on the select with the given ng-model <code>code</code>.</p>
+<h3 id="api_select">select(name).options(value1, value2...)</h3>
+<p>Picks the options with the given <code>code</code> on the multi select with the given ng-model <code>code</code>.</p>
+<h3 id="api_element">element(selector, label).count()</h3>
+<p>Returns the number of elements that match the given jQuery <code>code</code>. The <code>code</code> is used for test
+output.</p>
+<h3 id="api_element">element(selector, label).click()</h3>
+<p>Clicks on the element matching the given jQuery <code>code</code>. The <code>code</code> is used for test output.</p>
+<h3 id="api_element">element(selector, label).query(fn)</h3>
+<p>Executes the function <code>code</code>, where selectedElements are the elements that
+match the given jQuery <code>code</code> and <code>code</code> is a function that is called at the end of the <code>code</code>
+function.  The <code>code</code> is used for test output.</p>
+<h3 id="api_element">element(selector, label).{method}()</h3>
+<p>Returns the result of calling <code>code</code> on the element matching the given jQuery <code>code</code>, where
+<code>code</code> can be any of the following jQuery methods: <code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>,
+<code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>,
+<code>code</code>, <code>code</code>. The <code>code</code> is used for test output.</p>
+<h3 id="api_element">element(selector, label).{method}(value)</h3>
+<p>Executes the <code>code</code> passing in <code>code</code> on the element matching the given jQuery <code>code</code>, where
+<code>code</code> can be any of the following jQuery methods: <code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>,
+<code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>, <code>code</code>,
+<code>code</code>, <code>code</code>.  The <code>code</code> is used for test output.</p>
+<h3 id="api_element">element(selector, label).{method}(key)</h3>
+<p>Returns the result of calling <code>code</code> passing in <code>code</code> on the element matching the given jQuery
+<code>code</code>, where <code>code</code> can be any of the following jQuery methods: <code>code</code>, <code>code</code>, <code>code</code>. The
+<code>code</code> is used for test output.</p>
+<h3 id="api_element">element(selector, label).{method}(key, value)</h3>
+<p>Executes the <code>code</code> passing in <code>code</code> and <code>code</code> on the element matching the given jQuery
+<code>code</code>, where <code>code</code> can be any of the following jQuery methods: <code>code</code>,  <code>code</code>, <code>code</code>.  The
+<code>code</code> is used for test output.</p>
+<h2 id="matchers">Matchers</h2>
+<p>Matchers are used in combination with the <code>code</code> function as described above and can
+be negated with <code>code</code>. For instance: <code>code</code>.</p>
+<p>Source: <a href="a.js"><a href="a.js">https://github.com/angular/angular.js/blob/master/src/ngScenario/matchers.js</a></a></p>
+<pre>pre</pre>
+<h2 id="example">Example</h2>
+<p>See the <a href="https://github.com/angular/angular-seed">angular-seed</a> project for more examples.</p>
+<h3 id="example_conditional-actions-with-element">Conditional actions with element(...).query(fn)</h3>
+<p>E2E testing with angular scenario is highly asynchronous and hides a lot of complexity by
+queueing actions and expectations that can handle futures. From time to time, you might need
+conditional assertions or element selection. Even though you should generally try to avoid this
+(as it is can be sign for unstable tests), you can add conditional behavior with
+<code>code</code>. The following code listing shows how this function can be used to delete
+added entries (where an entry is some domain object) using the application&#39;s web interface.</p>
+<p>Imagine the application to be structured into two views:</p>
+<ol>
+<li><em>Overview view</em> which lists all the added entries in a table and</li>
+<li>a <em>detail view</em> which shows the entries&#39; details and contains a delete button. When clicking the
+delete button, the user is redirected back to the <em>overview page</em>.</li>
+</ol>
+<pre>pre</pre>
+<p>In order to understand what is happening, we should emphasize that ngScenario calls are not
+immediately executed, but queued (in ngScenario terms, we would be talking about adding
+future actions). If we had only one entry in our table, then the following future actions
+would be queued:</p>
+<pre>pre</pre>
+<p>For two entries, ngScenario would have to work on the following queue:</p>
+<pre>pre</pre>
+<h2 id="caveats">Caveats</h2>
+<p>ngScenario does not work with apps that manually bootstrap using angular.bootstrap. You must use the ng-app directive.</p>
+</div></div>

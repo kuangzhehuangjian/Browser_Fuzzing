@@ -1,0 +1,33 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/dev_guide.services.injecting_controllers.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code> property, which is an array containing strings with names of services to be injected.
+The name must match the corresponding service ID registered with angular. The order of the service
+IDs matters: the order of the services in the array will be used when calling the factory function
+with injected parameters. The names of parameters in factory function don&#39;t matter, but by
+convention they match the service IDs, which has added benefits discussed below.</p>
+<pre>pre</pre>
+<h3 id="source">Source</h3>
+<div source-edit="MyServiceModule" source-edit-deps="a.js" source-edit-html="index.html-198" source-edit-css="" source-edit-js="script.js-197" source-edit-json="" source-edit-unit="" source-edit-scenario="" source-edit-protractor="protractorTest.js-199"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre>pre</pre>
+<script>script</script>
+</div>
+<div class="tab-pane" title="Protractor e2e test">
+<pre>pre</pre>
+<script>script</script>
+</div>
+<div class="tab-pane" title="a.js">
+<pre class="prettyprint linenums" ng-set-text="script.js-200"></pre>
+<script>script</script>
+</div>
+</div><h3 id="demo">Demo</h3>
+<div class="well doc-example-live animate-container" ng-embed-app="MyServiceModuleDI" ng-set-html="index.html-201" ng-eval-javascript="script.js-200"></div>
+<p>However, if you plan to <a href="http://en.wikipedia.org/wiki/Minification_(programming)">minify</a> your
+code, your variable names will get renamed in which case you will still need to explicitly specify
+dependencies with the <code>code</code> property.</p>
+<h3 id="related-topics">Related Topics</h3>
+<p><a href="guide/dev_guide.services.understanding_services">Understanding Angular Services</a>
+<a href="guide/dev_guide.services.creating_services">Creating Angular Services</a>
+<a href="guide/dev_guide.services.managing_dependencies">Managing Service Dependencies</a>
+<a href="guide/dev_guide.services.testing_services">Testing Angular Services</a></p>
+<h3 id="related-api">Related API</h3>
+<p><a href="api/ng">Angular Service API</a></p>
+</div></div>

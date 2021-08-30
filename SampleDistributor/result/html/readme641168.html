@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <title>Logger, a PL/SQL Logging Utility</title>
+  <style>style</style>
+  <link type="text/css" rel="stylesheet"
+  href="a.css" />
+  <link type="text/css" rel="stylesheet"
+  href="a.css" />
+  <link type="text/css" rel="stylesheet"
+  href="a.css" />
+  <link type="text/css" rel="stylesheet"
+  href="a.css" />
+</head>
+
+<body>
+<html>
+<body>
+
+<script>script</script>
+
+<script>script</script>
+<script>script</script>
+<script>script</script>
+<script>script</script>
+<script>script</script>
+
+<script>script</script>
+<a name="top"></a> 
+
+<table class="infotable">
+  <tbody>
+    <tr>
+      <td>Author: </td>
+      <td></td>
+      <td>Tyler D. Muth</td>
+    </tr>
+    <tr>
+      <td>Contributing Author: </td>
+      <td></td>
+      <td>Christopher Beck</td>
+    </tr>
+    <tr>
+      <td>Last Updated:</td>
+      <td></td>
+      <td>4/16/2009</td>
+    </tr>
+    <tr>
+      <td>Project Version:</td>
+      <td></td>
+      <td>1.3.0</td>
+    </tr>
+    <tr>
+      <td>Related Products:</td>
+      <td></td>
+      <td>APEX, PL/SQL</td>
+    </tr>
+    <tr>
+      <td>Supported DB Versions:</td>
+      <td></td>
+      <td>XE, 10.2, 11.1, 11.2.</td>
+    </tr>
+    <tr>
+      <td>Discussions:</td>
+      <td></td>
+      <td><a
+        href="https://logger.samplecode.oracle.com/ds/viewForumSummary.do?dsForumId=2237">General
+        Questions</a> | <a
+        href="https://logger.samplecode.oracle.com/ds/viewForumSummary.do?dsForumId=2246">Announcements</a>
+        | <a
+        href="https://logger.samplecode.oracle.com/ds/viewForumSummary.do?dsForumId=2238">Enhancement
+        Requests</a> | <a
+        href="https://logger.samplecode.oracle.com/ds/viewForumSummary.do?dsForumId=2239">Bug
+        Reports</a> 
+
+        <div>
+        <span style="font-weight:bold;color:#A40000">Important!</span> Before
+        you can post to discussions you must <a
+        href="https://logger.samplecode.oracle.com/servlets/ProjectMembershipRequest"
+        target="_blank">Request Project Role</a> and select the role of
+        "Observer". I've set this to automatically approve you for that
+        role.</div>
+      </td>
+    </tr>
+    <tr>
+      <td>Download Now:</td>
+      <td></td>
+      <td><a
+        href="https://logger.samplecode.oracle.com/source/browse/*checkout*/logger/tags/1.3.0/logger_1.3.0.zip">https://logger.samplecode.oracle.com/source/browse/*checkout*/logger/tags/1.3.0/logger_1.3.0.zip</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="toc">
+<ul>
+  <li><a href="#What">What is Logger?</a></li>
+  <li><a href="#Installati">Installation</a>
+    <ul>
+      <li><a href="#install">To install into an existing schema:</a></li>
+      <li><a href="#install1">To install into a new schema</a></li>
+      <li><a href="#install2">To install through the APEX SQL Workshop:</a></li>
+    </ul>
+  </li>
+  <li><a href="#Logger">How to use Logger</a></li>
+  <li><a href="#Advanced">Advanced use</a>
+    <ul>
+      <li><a href="#Scope">Scope Parameter</a></li>
+      <li><a href="#Error1">Error Handling </a></li>
+      <li><a href="#Error2">Error Handling Showing the Call Stack </a></li>
+      <li><a href="#Timing">Timing </a></li>
+      <li><a href="#Various">Various Error Levels</a></li>
+      <li><a href="#User">Log User Environment Variables</a></li>
+      <li><a href="#OWA_UTL">Log OWA_UTL CGI Environment Variables</a></li>
+      <li><a href="#Character">Log Character Codes</a></li>
+      <li><a href="#ApexLog">Log APEX Item Values</a></li>
+    </ul>
+  </li>
+  <li><a href="#Configurat">Configuration</a>
+    <ul>
+      <li><a href="#Enable">Enable / Disable</a></li>
+      <li><a href="#Status">Status</a></li>
+      <li><a href="#Other">Other Options </a></li>
+    </ul>
+  </li>
+  <li><a href="#NO-OP">NO-OP Option for Production Environments</a></li>
+  <li><a href="#Maintenanc">Maintenance</a></li>
+  <li><a href="#Objects">Objects</a></li>
+  <li><a href="#Deinstalla">Deinstallation</a></li>
+  <li><a href="#Error">Error Levels</a></li>
+  <li><a href="#ChangeLog">Change Log</a>
+    <ul>
+      <li><a href="#Ver1.3.0">Version 1.3.0</a></li>
+      <li><a href="#Ver1.2.2">Version 1.2.2</a></li>
+      <li><a href="#Ver1.2.0">Version 1.2.0</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<h3 id="What">What is Logger?</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>This is a PL/SQL logging and debugging framework. The goal of logger is to
+be as simple as possible to install and use. The primary use cases for this
+utility include:</p>
+<ul>
+  <li>Debugging: It's often difficult to track down the source of an error
+    without some form of debugging instrumentation. This is particularly true
+    in multi-tier, stateless architectures such as Application Express.</li>
+  <li>Error Logging: While most experts agree that it's important not to mask
+    errors, it's also nice to have a persistent record of them. </li>
+  <li>Timing: Logger has a very simple timing framework built-in that makes it
+    easy to benchmark sections of code.</li>
+  <li>Instrumentation: Because it's easy to "turn-off" logger globally with
+    virtually no performance impact, it's easy to get in the habit of leaving
+    debug calls in production code. Now, when something does go wrong, you
+    simply flip the switch and logger is enabled making it much quicker to
+    debug errors.</li>
+</ul>
+
+<p></p>
+
+<h3 id="Installati">Installation</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<h4 id="install">To install into an existing schema:</h4>
+<a href="#top" class="top-link">[top]</a><br />
+<a href="#top" class="top-link">[top]</a><br />
+
+<ol>
+  <li>If possible, connect as a privilidged user and issue the following grants
+    to your "exising_user": 
+    <pre>pre</pre>
+  </li>
+  <li><pre>pre</pre>
+  </li>
+</ol>
+
+<p></p>
+
+<h4 id="install1">To install into a new schema</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+<ol>
+  <li>Using sql*plus or SQL Developer, connect to the database as system or a
+    user with the DBA role.</li>
+  <li><pre>pre</pre>
+  </li>
+  <li>Enter the username, tablespace, temporary tablespace and password for the
+    new schema.</li>
+  <li>Connect to the database as the newly created user.</li>
+  <li><pre>pre</pre>
+  </li>
+</ol>
+
+<h4 id="install2">To install through the APEX SQL Workshop:</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+<ol>
+  <li>Any schema provisioned by APEX should have the proper grants to install
+    logger.</li>
+  <li>Upload logger_install.sql in the "Scripts" section of the SQL
+  Workshop</li>
+  <li>Run the script.</li>
+  <li>APEX will warn you that there are a number of SQL*Plus commands that it
+    will ignore. This is fine.</li>
+  <li>One of the views will get an error on install as it depends on another
+    packge. Don't worry about this as the view will work fine once the
+    installation completes.</li>
+</ol>
+<br />
+
+
+<p>Once installed, logger is automatically set to <strong>DEBUG</strong> level.
+Run logger.status to view more details as discussed later in this document.</p>
+
+<h3 id="Logger">How to use Logger</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+<pre>pre</pre>
+<pre>pre</pre>
+That's it for the basic use of logger. This use-case will never change for this
+project as I don't want there to be a learning curve for a debugging utility. 
+
+<p></p>
+
+<h3 id="Advanced">Advanced use</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<h4 id="Scope">Scope Parameter</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>All procedures in logger have a parameter named p_scope. The idea behind
+scope is to give some context to the log message, such as the application,
+package.procedure where it was called. Logger does capture the call stack, as
+well as module and action which are great for APEX logging as they are app
+number / page number. However, none of these options gives you a clean,
+consistent way to group messages. So, the p_scope parameter is really nothing
+special as it simply performs a lower() on the input and stores it in the scope
+column.</p>
+
+<p>In the following example, I'm working on an application called "people". I
+will separate the components of scope with a simple dot. So, log / error
+message in this application will start with "people.".</p>
+<pre>pre</pre>
+
+<h4 id="Error1">Error Handling </h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+<pre>pre</pre>
+
+<h4 id="Error2">Error Handling Showing the Call Stack </h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>In this example, procedure test1 calls procedure test2 which in turn class
+test3. Test3 has a run-time error.</p>
+<pre>pre</pre>
+
+<h4 id="Timing">Timing </h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+<pre>pre</pre>
+
+<h4 id="Various">Various Error Levels</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+<pre>pre</pre>
+
+<p></p>
+
+<h4 id="User">Log User Environment Variables</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>There are many occassions when the value of one of the USERENV session
+variables (Documentation: <a
+href="http://download.oracle.com/docs/cd/B28359_01/server.111/b28286/functions172.htm">Overview</a>,
+<a
+href="http://download.oracle.com/docs/cd/B28359_01/server.111/b28286/functions172.htm#g1513460">list
+of variables</a>) is a big step in the right direction of finding a problem. A
+simple call to the logger.log_userenv procedure is all it takes to save them in
+the "EXTRA" column of logger_logs.</p>
+<pre>pre</pre>
+<pre>pre</pre>
+<pre>pre</pre>
+
+<h4 id="OWA_UTL">Log OWA_UTL CGI Environment Variables</h4>
+<a href="#top" class="top-link">[top]</a><br />
+This option only works within a web session, but it's a great way to quickly
+take a look at an APEX environment: 
+<pre>pre</pre>
+
+<h4 id="Character">Log Character Codes</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>Have you ever run into an issue with a string that contains control
+characters such as carriage returns, line feeds and tabs that are difficult to
+debug? The sql <a
+href="http://download.oracle.com/docs/cd/B28359_01/server.111/b28286/functions048.htm#sthref1340"
+target="_blank">dump()</a> function is great for this, but the output is a bit
+hard to read as it outputs the character codes for each character, so you end
+up comparing the character code to an <a href="http://www.asciitable.com/"
+target="_blank">ascii table</a> to figure out what it is. The function
+get_character_codes and the procedure log_character_codes make it much easier
+as they line up the characters in the original string under the coorisponding
+character codes from dump. Additionally, all tabs are replaced with "^" and all
+other control characters such as carriage returns and line feeds are replaced
+with "~".</p>
+<pre>pre</pre>
+
+<h4 id="ApexLog">Log APEX Item Values</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>This feature is useful in debugging issues in an APEX application that are
+related session state. The developers toolbar in APEX provides a place to view
+session state, but it won't tell you the value of items midway through page
+rendering or right before and after an AJAX call to an application process.</p>
+
+<p>Before using this feature it's important to note that it must be configured
+first. The next section discusses this configuration.</p>
+<pre>pre</pre>
+<pre>pre</pre>
+
+<h3 id="Configurat">Configuration</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<h4 id="Enable">Enable / Disable</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>To enable logging:</p>
+<pre>pre</pre>
+
+<p><br />
+</p>
+
+<p>To disable logging:</p>
+<pre>pre</pre>
+
+<p><br />
+</p>
+
+<p>Instead of disabling all logging, setting the level to "ERROR" might be a
+better approach:</p>
+<pre>pre</pre>
+
+<p><br />
+</p>
+
+<p>Also take a look at the NO-OP section later in this document.</p>
+
+<p></p>
+
+<h4 id="Status">Status</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>To view the status of the logger:</p>
+<pre>pre</pre>
+
+<p></p>
+
+<h4 id="Other">Other Options </h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<table border="0" style="width: 100%" class="parameters">
+  <col />
+  <col />
+  <tbody>
+    <tr>
+      <td class="def1">Flashback</td>
+      <td>To enable this option, grant execute on dbms_flashback to the user
+        that owns the logger packages. Every insert into logger_logs will
+        include the SCN (System Commit Number). This allows you to flashback a
+        session to the time when the error occured to help debug it or even
+        undo any data corruption. As SYS from sql*plus: <br />
+
+        <pre>pre</pre>
+      </td>
+    </tr>
+    <tr>
+      <td class="def1">APEX</td>
+      <td>This option allows you to call logger.log_apex_items which grabs the
+        names and values of all APEX items from the current session and stores
+        them in the logger_logs_apex_items table. This is extremely useful in
+        debugging APEX issues. This option is enabled automatcially by logger_configure
+		if APEX is installed in the database.<br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Once you perform the previously described steps for the Flashback or APEX
+option, simply run the logger_configure procedure, then run logger.status to
+check validate your changes.</p>
+<pre>pre</pre>
+
+<h3 id="NO-OP">NO-OP Option for Production Environments</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>To make sure there is no fear of leaving debug statements in production
+code, logger comes with a <a href="http://en.wikipedia.org/wiki/NOP"
+target="_blank">NO-OP</a> (No Operation) installation file (logger_no_op.sql).
+This installs only the a shell of the logger package. All procedures are
+essentially NO-OPs. It does not even create the tables so there is absolutely
+no chance it is doing any logging. Personally, I would leave the full version
+installed and simply dial-down the level to "ERROR" as the performance hit is
+exceptionally small. </p>
+
+<h3 id="Maintenanc">Maintenance</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>By default, the DBMS_SCHEDULER job "LOGGER_PURGE_JOB" runs every night at
+1:00am and deletes any logs older than 7 days that are of error level g_debug
+or higher which includes g_debug and g_timing. This means logs with any lower
+level such as g_error or g_permanent will never be purged. You can also
+manually purge all logs using logger.purge_all, but this will not delete logs
+of error level g_permanent.</p>
+
+<h3 id="Objects">Objects</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>The following database objects are installed with logger:</p>
+<pre>pre</pre>
+
+<h3 id="Deinstalla">Deinstallation</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<p>Simply run @drop_logger.sql as the logger user.</p>
+
+<h3 id="Error">Error Levels</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+<pre>pre</pre>
+
+<h3 id="ChangeLog">Change Log</h3>
+<a href="#top" class="top-link">[top]</a><br />
+
+
+<h4 id="Ver1.3.0">Version 1.3.0</h4>
+<a href="#top" class="top-link">[top]</a><br />
+<ul>
+  <li>Fixed major flaw in time calculation used in time_start/time_stop</li>
+  <li>Changed implementation of LOG_APEX_ITEMS to use the APEX views so explicit privs on wwv_flow_data are not required.</li>
+</ul>
+
+<h4 id="Ver1.2.2">Version 1.2.2</h4>
+<a href="#top" class="top-link">[top]</a><br />
+<ul>
+  <li>Fixed an error with the admin security check reported by John Flack</li>
+  <li>It is now possible to install logger in multiple schemas as the global
+  context is now prefixed with the schema name.  So, the global context name
+  in the LOGGER schema would be LOGGER_LOGCTX and the SCOTT schema would be SCOTT_LOGCTX.
+  Thanks to Bill Wheeling for reporting this one.</li>
+</ul>
+
+<h4 id="Ver1.2.0">Version 1.2.0</h4>
+<a href="#top" class="top-link">[top]</a><br />
+
+<ul>
+  <li><span style="color:#800000">New</span> PROTECT_ADMIN_PROCS preference
+    which is TRUE by default, protects set_level, purge and purge_all. This
+    means that only someone logged into the schema where logger is installed
+    can call these procedures. The idea is that you could grant execute on
+    logger to other schemas, but want to prevent them from changing the levels
+    or purging the logs.</li>
+  <li><span style="color:#800000">New</span> preference called
+    INCLUDE_CALL_STACK allows you to enable / disable logging of the full call
+    stack for LEVELS greater than ERROR (such as debug). Logging the call stack
+    does take additional resources and also requires additional storage per
+    row. So, you can still read your debug messages, but you simply won't see
+    the full call stack. The value is TRUE by default.</li>
+  <li><span style="color:#800000">New</span> CLOB parameter of "P_EXTRA" was
+    added to call LOG... procedures. This populates a CLOB column in
+    LOGGER_LOGS called "EXTRA". This column is also used by several new
+    functions / procedures where the values are relatively large.</li>
+  <li><span style="color:#800000">New</span>
+    <strong>logger.log_userenv</strong> procedure logs information obtained
+    through sys_context('userenv'...), such as IP Address, NLS info, schema /
+    user information. It's use is documented <a href="#User">here</a>. </li>
+  <li><span style="color:#800000">New</span>
+    <strong>logger.log_cgi_env</strong> procedure grabs all output from
+    owa_util.print_cgi_env and loggs it to logger_logs.extra. Useful in
+    debugging some APEX issues. It's use is documented <a
+    href="#OWA_UTL">here</a>. </li>
+  <li><span style="color:#800000">New</span>
+    <strong>logger.log_character_codes</strong> procedure supplements the
+    output of the SQL DUMP() function, great for finding hidded carriage return
+    / line feeds or other non-printable characters.It's use is documented <a
+    href="#Character">here</a>.</li>
+  <li>Fixed set_level, purge and purge_all so they are now autonomous
+    transactions (thanks Tony).</li>
+</ul>
+</body>
+</html>
+</body>
+</html>

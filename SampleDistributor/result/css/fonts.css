@@ -1,0 +1,39 @@
+/* ----------------------------------- *
+ * Fonts
+ * ----------------------------------- */
+
+
+html {
+  font-family: Helvetica, "Times New Roman", sans-serif;
+}
+.times-new-roman {
+  font-family: "Times New Roman", sans-serif;
+}
+.big {
+  font-size: 32px;
+}
+.small {
+  font-size: 8px;
+}
+.heavy {
+  font-weight: 700;
+}
+.monospaced {
+  font-family: "Courier New", monospaced;
+}
+.cursive {
+  font-family: cursive;
+}
+.spaced {
+  letter-spacing: 24px;
+}
+.big-line-height {
+  line-height: 128px;
+}
+.bungee {
+  font-family: Bungee, sans-serif;
+}
+
+
+
+

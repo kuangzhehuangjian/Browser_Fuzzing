@@ -1,0 +1,116 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/tutorial/step_02.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code>:</strong>
+<pre>pre</pre>
+<p>We replaced the hard-coded phone list with the
+<a href="api/ng.directive:ngRepeat"><code>code</code></a> and two
+<a href="guide/expression">Angular expressions</a> enclosed in curly braces:
+<code>code</code> and <code>code</code>:</p>
+<ul>
+<li>The <code>code</code> statement in the <code>code</code> tag is an Angular repeater. The
+repeater tells Angular to create a <code>code</code> element for each phone in the list using the first <code>code</code>
+tag as the template.</li>
+</ul>
+<p>We have added a new directive, called <code>code</code>, which attaches a <code>code</code>
+<strong>controller</strong> to the DOM at this point.</p>
+<ul>
+<li>As we&#39;ve learned in <a href="tutorial/step_00">step 0</a>, the curly braces around <code>code</code> and <code>code</code> denote
+bindings. As opposed to evaluating constants, these expressions are referring to our application
+model, which was set up in our <code>code</code> controller.</li>
+</ul>
+<p><img class="diagram" src="a.png"></p>
+<h3 id="model-and-controller">Model and Controller</h3>
+<p>The data <strong>model</strong> (a simple array  of phones in object literal notation) is now instantiated within
+the <code>code</code> <strong>controller</strong>. The <strong>controller</strong> is simply a constructor function that takes a
+<code>code</code> parameter:</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>Here we declared a controller called <code>code</code> and registered it in an AngularJS
+module, <code>code</code>. Notice that our <code>code</code> directive (on the <code>code</code> tag) now specifies the <code>code</code>
+module name as the module to load when bootstrapping the Angular application.</p>
+<p>Although the controller is not yet doing very much, it plays a crucial role. By providing context
+for our data model, the controller allows us to establish data-binding between
+the model and the view. We connected the dots between the presentation, data, and logic components
+as follows:</p>
+<ul>
+<li><p>The <a href="api/ng.directive:ngController"><code>code</code></a> directive, located on the <code>code</code> tag,
+references the name of our controller, <code>code</code> (located in the JavaScript file
+<code>code</code>).</p>
+</li>
+<li><p>The <code>code</code> controller attaches the phone data to the <code>code</code> that was injected into our
+controller function. This <em>scope</em> is a prototypical descendant of the <em>root scope</em> that was created
+when the application was defined. This controller scope is available to all bindings located within
+the <code>code</code> tag.</p>
+</li>
+</ul>
+<h4 id="model-and-controller_scope">Scope</h4>
+<p>The concept of a scope in Angular is crucial. A scope can be seen as the glue which allows the
+template, model and controller to work together. Angular uses scopes, along with the information
+contained in the template, data model, and controller, to keep models and views separate, but in
+sync. Any changes made to the model are reflected in the view; any changes that occur in the view
+are reflected in the model.</p>
+<p>To learn more about Angular scopes, see the <a href="api/ng.$rootScope.Scope"><code>code</code></a>.</p>
+<h3 id="tests">Tests</h3>
+<p>The &quot;Angular way&quot; of separating controller from the view, makes it easy to test code as it is being
+developed. If our controller is available on the global namespace then we can simply instantiate it
+with a mock <code>code</code> object. Take a look at the following unit test for our controller:</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>The test instantiates <code>code</code> and verifies that the phones array property on the scope
+contains three records. This example demonstrates how easy it is to create a unit test for code in
+Angular. Since testing is such a critical part of software development, we make it easy to create
+tests in Angular so that developers are encouraged to write them.</p>
+<h4 id="tests_testing-non-global-controllers">Testing non-Global Controllers</h4>
+<p>In practice, you will not want to have your controller functions in the global namespace. Instead,
+we have registered our controllers in the <code>code</code> module. In this case Angular provides a
+service, <code>code</code>, which will retrieve your controller by name.  Here is the same test using
+<code>code</code>:</p>
+<p><strong><code>code</code>:</strong>
+<pre>pre</pre>
+<p>Don&#39;t forget that we need to load up the <code>code</code> module into the test so that the controller
+is available to be injected.</p>
+<h4 id="tests_writing-and-running-tests">Writing and Running Tests</h4>
+<p>Angular developers prefer the syntax of Jasmine&#39;s Behavior-driven Development  (BDD) framework when
+writing tests. Although Angular does not require you to use Jasmine, we wrote all of the tests in
+this tutorial in Jasmine. You can learn about Jasmine on the <a href="http://pivotal.github.com/jasmine/">Jasmine home page</a> and at the <a href="http://pivotal.github.io/jasmine/">Jasmine docs</a>.</p>
+<p>The angular-seed project is pre-configured to run all unit tests using <a href="http://karma-runner.github.io/">Karma</a>. Ensure that the necessary karma plugins are installed.
+You can do this by issuing <code>code</code> into your terminal.</p>
+<p>To run the test, do the following:</p>
+<ol>
+<li><p>In a <em>separate</em> terminal window or tab, go to the <code>code</code> directory and run
+<code>code</code> (if you are on Windows, run scripts\test.bat) to start the Karma server (the
+config file necessary to start the server is located at <code>code</code>).</p>
+</li>
+<li><p>Karma will start a new instance of Chrome browser automatically. Just ignore it and let it run in
+the background. Karma will use this browser for test execution.</p>
+</li>
+<li><p>You should see the following or similar output in the terminal:</p>
+<pre>pre</pre>
+<p>Yay! The test passed! Or not...</p>
+</li>
+<li><p>To rerun the tests, just change any of the source or test .js files. Karma will notice the change
+and will rerun the tests for you. Now isn&#39;t that sweet?</p>
+</li>
+</ol>
+<h2 id="experiments">Experiments</h2>
+<ul>
+<li><p>Add another binding to <code>code</code>. For example:</p>
+<pre>pre</pre>
+</li>
+<li><p>Create a new model property in the controller and bind to it from the template. For example:</p>
+<pre>pre</pre>
+<p>Then add a new binding to <code>code</code>:</p>
+<pre>pre</pre>
+<p>Refresh your browser and verify that it says &quot;Hello, World!&quot;.</p>
+</li>
+<li><p>Create a repeater that constructs a simple table:</p>
+<pre>pre</pre>
+<p>Now, make the list 1-based by incrementing <code>code</code> by one in the binding:</p>
+<pre>pre</pre>
+</li>
+<li><p>Make the unit test fail by changing the <code>code</code> statement to <code>code</code>.</p>
+</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>You now have a dynamic app that features separate model, view, and controller components, and you
+are testing as you go. Now, let&#39;s go to <a href="tutorial/step_03">step 3</a> to learn how to add full text search
+to the app.</p>
+<ul doc-tutorial-nav="2"></ul></div></div>

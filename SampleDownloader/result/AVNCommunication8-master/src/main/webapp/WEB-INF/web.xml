@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>AVNCommunication</display-name>
+ 
+   <welcome-file-list>
+    <welcome-file>avnlogin.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>loginpage</servlet-name>
+    <servlet-class>servlet.avnlogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginpage</servlet-name>
+    <url-pattern>/avnlogin</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>avnhomepage.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>viewticket</servlet-name>
+    <servlet-class>servlet.viewticket</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>viewticket</servlet-name>
+    <url-pattern>/viewticket.do</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>avncreatepage.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>cancelpage</servlet-name>
+    <servlet-class>servlet.cancelpage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cancelpage</servlet-name>
+    <url-pattern>/cancelpage</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>avncreatepage.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>createpage</servlet-name>
+    <servlet-class>servlet.createpage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>createpage</servlet-name>
+    <url-pattern>/createpage</url-pattern>
+  </servlet-mapping>
+ 
+</web-app>

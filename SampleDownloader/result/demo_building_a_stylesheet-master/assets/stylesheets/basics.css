@@ -1,0 +1,18 @@
+/* ----------------------------------- *
+ * Basics
+ * ----------------------------------- */
+
+#greeting {
+  background: darkred;
+}
+.big {
+  font-size: 24px;
+}
+p {
+  background: darkgreen;
+  color: white;
+}
+
+
+
+

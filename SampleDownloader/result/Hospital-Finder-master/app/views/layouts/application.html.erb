@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  	<%= favicon_link_tag(source='favicon.ico', options={}) %>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HospitalFinder</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    
+    	<!-- Bootstrap CSS -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="autosize.min.js" type="text/javascript"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+		<script src="wow.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/animate.css">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+		
+
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+		
+		<!--<script src="jquery.nicescroll.min" type="text/javascript"></script>-->
+		
+		<!--<script>-->
+		<!--	$("html").niceScroll({-->
+		<!--	cursorcolor: "#c9302c",-->
+		<!--	cursorborder: "none",-->
+		<!--	background: '#E5E9E7',-->
+		<!--	cursorwidth: "7px",-->
+		<!--	cursorfixedheight:190,-->
+		<!--	railpadding:"top:30,right:0,left:0,bottom:0",-->
+		<!--});-->
+		<!--</script>-->
+		
+  </head>
+
+  <body>
+  
+  	<!--Temporary Login for hospitals and users, These are for testing purposes-->
+  	<!--User Login-->
+    <p class="navbar-text pull-right">
+      
+    
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    </p>
+    
+   
+		
+		<!--End of Temporary Login-->
+    
+    
+    
+    		<div class="container">
+					<div class="col-sm-10 col-sm-offset-1 mycontainer">
+						<div class="col-sm-12 mysection first">
+					<div class="col-sm-6">
+						<div id="logo">
+							<%= link_to image_tag("logo.png" ,:width => "250"), root_path, :target => "_blank"%>
+							<%= link_to root_path do %>
+							<% end %>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-6">
+								<div class="btn-group">
+										
+										<!--modal triggers-->
+										<% if user_signed_in? %>
+
+											<div class="row">
+												<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link btn btn-info' %>
+												<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link btn btn-danger'  %>
+											</div>
+											<br>
+											<div class="row">
+												<%= image_tag(current_user.image.url(:small)) %>
+												<strong><%= link_to current_user.name, current_user %> <%=  %></strong>
+											</div>
+											
+											
+										<% elsif hospital_signed_in? %>
+											<div class="row">
+												Logged in as: <strong><%= link_to current_hospital.name, current_hospital %> <%=  %></strong>
+											</div>
+											<br>
+											<div class="row">
+												<%= link_to 'Edit profile', edit_hospital_registration_path, :class => 'navbar-link btn btn-info' %>
+												<%= link_to "Logout", destroy_hospital_session_path, method: :delete, :class => 'navbar-link btn btn-danger'  %>
+											</div>
+										<% else %>
+											<div class="row">
+												<button type="button" class="btn btn-info" data-toggle="modal" data-target="#loginModal">Login</button>
+												<button type="button" class="btn btn-info" data-toggle="modal" data-target="#signupModal">Sign up</button>
+											</div>
+										<% end %>
+										
+									<!--	<br>-->
+									<!--	User: -->
+								 <!--   <% if user_signed_in? %>-->
+							  <!--    Logged in as <strong><%= current_user.email %></strong>.-->
+							  <!--    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |-->
+							  <!--    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>-->
+							  <!--  <% else %>-->
+							  <!--    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |-->
+							  <!--    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>-->
+							  <!--  <% end %>-->
+							  <!--  <br>-->
+							    
+							  <!--  Hospital-->
+							  <!--  <% if hospital_signed_in? %>-->
+									<!--  Logged in as <strong><%= current_hospital.email %></strong>.-->
+									<!--  <%= link_to 'Edit profile', edit_hospital_registration_path, :class => 'navbar-link' %> |-->
+									<!--  <%= link_to "Logout", destroy_hospital_session_path, method: :delete, :class => 'navbar-link'  %>-->
+									<!--<% else %>-->
+									<!--  <%= link_to "Sign up", new_hospital_registration_path, :class => 'navbar-link'  %> |-->
+									<!--  <%= link_to "Login", new_hospital_session_path, :class => 'navbar-link'  %>-->
+									<!--<% end %>-->
+																
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<a class="btn btn-success hidden" id="resetpass" data-toggle="modal" href='#resetmod'>Login</a>
+
+		  	<%= yield %>
+		  	
+				<div class="panel panel-default" style="border-top-left-radius: 0; border-top-right-radius: 0;">
+					<div class="panel-footer gocenter">
+						All Copy Rights Are Reserved 2017
+					</div>
+				</div>
+			</div>
+		</div> 	
+		
+
+		
+		
+		<!--Login Modal -->
+		<div id="loginModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		    	<div class="modal-body">
+		    		<h3>Login</h3>
+		    	</div>	
+		    	<hr>
+		      <div class="modal-body">
+		      	<div class="container-fluid">
+							<div class="row">
+		        		<%= link_to "User", new_user_session_path, :class => 'navbar-link btn btn-lg btn-huge btn-primary col-sm-6'  %>
+		        		<%= link_to "Hospital", new_hospital_session_path, :class => 'navbar-link btn btn-lg btn-huge btn-primary col-sm-6'  %>
+		      		</div>
+		      	</div>
+		      </div>
+		    </div>
+		
+		  </div>
+		</div>
+		
+		<!--Signup Modal -->
+		<div id="signupModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		    	<div class="modal-body">
+		    		<h3>Sign Up</h3>
+		    	</div>	
+		    	<hr>
+		      <div class="modal-body">
+		      	<div class="container-fluid">
+							<div class="row">
+		        		<%= link_to "User", new_user_registration_path, :class => 'navbar-link btn btn-lg btn-huge btn-primary col-sm-6'  %>
+		        		<%= link_to "Hospital", new_hospital_registration_path, :class => 'navbar-link btn btn-lg btn-huge btn-primary col-sm-6'  %>
+		      		</div>
+		      	</div>
+		      </div>
+		    </div>
+		
+		  </div>
+		</div>
+		
+		
+  </body>
+  
+  
+  
+</html>

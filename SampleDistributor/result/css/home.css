@@ -1,0 +1,20 @@
+/** ----------------------------------------
+ * Home
+---------------------------------------- **/
+
+#main-header a {
+  color: #7A90CF;
+  text-decoration: none;
+}
+
+.site-title {
+  font-size: 4em;
+}
+.logo {
+  max-width: 512px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+

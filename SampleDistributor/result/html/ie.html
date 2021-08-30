@@ -1,0 +1,65 @@
+<a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/ie.ngdoc" class="improve-docs btn btn-primary"><i class="icon-edit"> </i> Improve this doc</a><h1><code>code</code> to the root element in conjunction with <code>code</code> attribute
+<pre>pre</pre>
+</li>
+<li><p>you <strong>do not</strong> use custom element tags such as <code>code</code> (use the attribute version
+<code>code</code> instead), or</p>
+</li>
+<li><p>if you <strong>do use</strong> custom element tags, then you must take these steps to make IE 8 and below happy:
+<pre>pre</pre>
+</li>
+</ol>
+<p>The <strong>important</strong> parts are:</p>
+<ul>
+<li><p><code>code</code> - <em>namespace</em> - you need one namespace for each custom tag you are planning on
+using.</p>
+</li>
+<li><p><code>code</code> - <em>creation of custom tag names</em> - Since this is an
+issue only for older version of IE you need to load it conditionally. For each tag which does
+not have namespace and which is not defined in HTML you need to pre-declare it to make IE
+happy.</p>
+</li>
+</ul>
+<h2 id="long-version">Long Version</h2>
+<p>IE has issues with element tag names which are not standard HTML tag names. These fall into two
+categories, and each category has its own fix.</p>
+<ul>
+<li><p>If the tag name starts with <code>code</code> prefix then it is considered an XML namespace and must
+have corresponding namespace declaration on <code>code</code></p>
+</li>
+<li><p>If the tag has no <code>code</code> but it is not a standard HTML tag, then it must be pre-created using
+<code>code</code></p>
+</li>
+<li><p>If you are planning on styling the custom tag with CSS selectors, then it must be
+pre-created using <code>code</code> regardless of XML namespace.</p>
+</li>
+</ul>
+<h3 id="long-version_the-good-news">The Good News</h3>
+<p>The good news is that these restrictions only apply to element tag names, and not to element
+attribute names. So this requires no special handling in IE: <code>code</code>.</p>
+<h3 id="long-version_what-happens-if-i-fail-to-do-this">What happens if I fail to do this?</h3>
+<p>Suppose you have HTML with unknown tag <code>code</code> (this could also be <code>code</code> or <code>code</code> with same
+result):</p>
+<pre>pre</pre>
+<p>It should parse into the following DOM:</p>
+<pre>pre</pre>
+<p>The expected behavior is that the <code>code</code> element has a child element <code>code</code>, which in turn has
+the text <code>code</code>.</p>
+<p>But this is not what IE does (if the above fixes are not included):</p>
+<pre>pre</pre>
+<p>In IE, the behavior is that the <code>code</code> element has three children:</p>
+<ol>
+<li><p>A self closing <code>code</code>. Example of self closing tag is <code>code</code>. The trailing <code>code</code> is optional,
+but the <code>code</code> tag is not allowed to have any children, and browsers consider <code>code</code> as three siblings not a <code>code</code> with <code>code</code> as child.</p>
+</li>
+<li><p>A text node with <code>code</code>. This should have been a child of <code>code</code> above, not a sibling.</p>
+</li>
+<li><p>A corrupt self closing <code>code</code>. This is corrupt since element names are not allowed to have
+the <code>code</code> character. Furthermore this closing element should not be part of the DOM since it is
+only used to delineate the structure of the DOM.</p>
+</li>
+</ol>
+<h3 id="long-version_css-styling-of-custom-tag-names">CSS Styling of Custom Tag Names</h3>
+<p>To make CSS selectors work with custom elements, the custom element name must be pre-created with 
+<code>code</code> regardless of XML namespace.</p>
+<pre>pre</pre>
+</div></div>

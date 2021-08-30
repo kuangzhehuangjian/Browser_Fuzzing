@@ -1,0 +1,8 @@
+{% if PIWIK_SITE_ID and PIWIK_URL %}
+    {% if PIWIK_SSL_URL is not defined %}
+        {% set PIWIK_SSL_URL = PIWIK_URL %}
+    {% endif %}
+    
+    <script>script</script>
+    
+{% endif %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Building Your Own Style Sheets</title>
+
+    <link rel="stylesheet" href="a.css">
+    <link rel="stylesheet" href="a.css">
+    <link rel="stylesheet" href="a.css">
+    <link rel="stylesheet" href="a.css">
+
+    <link rel="stylesheet" href="a.css">
+  </head>
+  <body>
+    
+    <nav id="main-nav">
+      <ul class="clearfix">
+        <li><a href="/">Home</a></li>
+        <li><a href="/basics.html">Basics</a></li>
+        <li><a href="/box_model.html">Box Model</a></li>
+        <li><a href="/positioning.html">Positioning</a></li>
+        <li><a href="/fonts.html">Fonts</a></li>
+        <li><a href="/backgrounds.html">Backgrounds</a></li>
+        <li><a href="/lists.html">Lists</a></li>
+        <li><a href="/media.html">Media</a></li>
+        <li><a href="/tables.html">Tables</a></li>
+
+        <li><a href="/form.html">Form</a></li>
+        <li><a href="/post.html">Post</a></li>
+      </ul>
+    </nav>
+
+    <h1>CSS Positioning</h1>
+
+    <h2>Clearing Floats</h2>
+
+    <div class="clearfix">
+      <div class="square blue left"></div>
+      <div class="square blue left"></div>
+      <div class="square red clear"></div>
+    </div>
+
+
+    <h2>Floats in a Layout with Positioning</h2>
+
+    <header id="main-header" class="orange">Header</header>
+
+    <section id="main-content-container" class="clearfix yellow">
+      <main id="main-content" class="left green">
+        Main Content
+        <div id="relatively-positioned-parent" class="orange">
+          <div class="square white">Static</div>
+          <div id="relatively-positioned-child" class="purple square">Rel</div>
+          <div class="square white">Static</div>
+          <div id="absolutely-positioned-child" class="cyan square">Abs</div>
+          <div class="square white">Static</div>
+          <div id="fixed-position-child" class="grey square">Fixed</div>
+        </div>
+      </main>
+      <aside id="sidebar" class="left blue">Sidebar</aside>
+    </section>
+
+
+    <footer id="main-footer" class="red">Footer</footer>
+  </body>
+</html>
+
+
+
+
+
+
