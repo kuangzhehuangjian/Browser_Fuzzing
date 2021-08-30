@@ -120,7 +120,7 @@ class repo_crawler():
 				print("repo_name_list 为:{}".format(",".join(repo_name_list)))
 				
 				for i in range(len(repo_name_list)):
-					repo_list.append(repo_name_list[i])
+					repo_list.append(repo_name_list[i].split("href=\"")[1].split("\"")[0])
 					count+=1
 					print("当前的repolist为")
 					print(repo_list)
