@@ -31,7 +31,7 @@ class repo_crawler():
 			os.makedirs('./result')
 		
 		isAllDown = False
-		
+		print(len(repo_list))
 		for repo_name in repo_list:
 			# if self.isOverSize(repo_name) == False:
 				# self.download_repo(repo_name)
