@@ -114,14 +114,17 @@ class repo_crawler():
 				
 				# 获取第一次过滤文本
 				filt_text = re.compile(repo_list_pat,re.S).findall(req.text)[0] 
-				
+				print("filt_text为:{}".format(filt_text))
 				#得到一个仓库名的list
 				repo_name_list = re.compile(repo_name_pat,re.S).findall(filt_text)
+				print("repo_name_list 为:{}".format(",".join(repo_name_list)))
 				
 				for i in range(len(repo_name_list)):
 					repo_list.append(repo_name_list[i])
 					count+=1
-					if count == self.repo_num+20: #爬取到足够数量的仓库名
+					print("当前的repolist为")
+					print(repo_list)
+					if count == self.repo_num+5: #爬取到足够数量的仓库名
 						isOk = True
 						break
 			except:
