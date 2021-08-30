@@ -104,7 +104,10 @@ class repo_crawler():
 			#根据关键词和页数组成搜索页url
 			url = self.base_url+'&l='+self.language+'&q='+self.keyword+'+size:<='+str(self.repo_size)+'&p='+str(p+1)
 			
+			print("url is {}".format(url))
+			
 			try:
+				print("成功进入try,其中url为:{}".format(url))
 				req = requests.get(url=url,verify=False) #获得响应
 				
 				# 获取第一次过滤文本
