@@ -110,7 +110,7 @@ class repo_crawler():
 			try:
 				print("成功进入try,其中url为:{}".format(url))
 				req = requests.get(url=url,verify=False) #获得响应
-				print("成功获取获得返回数据，其中url为:{}")
+				print("成功获取获得返回数据，其中response为:{}".format(str(req)))
 				
 				# 获取第一次过滤文本
 				filt_text = re.compile(repo_list_pat,re.S).findall(req.text)[0] 
